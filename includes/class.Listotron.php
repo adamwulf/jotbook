@@ -539,10 +539,10 @@ class Listotron{
 		$ok = true;
 		for($j=0;$j<count($this->data["rows"]);$j++){
 			$row = $this->data["rows"][$j];
+			$seen_so_far[] = $row["row_id"];
+			$ok = $ok && ($row["par"] == null  || in_array($row["par"], $seen_so_far));
+			$ok = $ok && ($row["prev"] == null || in_array($row["prev"], $seen_so_far));
 			if(!isset($row["del"])){
-				$seen_so_far[] = $row["row_id"];
-				$ok = $ok && ($row["par"] == null  || in_array($row["par"], $seen_so_far));
-				$ok = $ok && ($row["prev"] == null || in_array($row["prev"], $seen_so_far));
 				if($row["prev"] != null){
 					$row2 = $this->getRow($row["prev"]);
 					$ok = $ok && $row2["par"] == $row["par"];

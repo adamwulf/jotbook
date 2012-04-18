@@ -1284,6 +1284,14 @@ class TestListotron extends UnitTestCase{
 	}
 
 
+	public function test_somehow_invalid(){
+		//
+		// look at the somehow.invalid.data file
+		//
+		// when it loads JS gets stuck on a node
+		$this->assertTrue(false);
+	}
+
 };
 
 
