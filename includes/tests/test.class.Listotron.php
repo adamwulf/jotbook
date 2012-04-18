@@ -1097,6 +1097,143 @@ class TestListotron extends UnitTestCase{
 
 
 
+	/**
+	 * this test is when a node with children, having
+	 * a no siblings, is deleted
+	 *
+	 * all of the kids should be inherited by the parent
+	 */
+	public function test_delete_node_with_no_siblings_with_kids(){
+		$listotron = new Listotron(array (
+		  'rows' => 
+		  array (
+		    0 => 
+		    array (
+		      'row_id' => '1',
+		      'text' => 'one',
+		      'par' => NULL,
+		      'prev' => NULL,
+		    ),
+		    1 => 
+		    array (
+		      'row_id' => '2',
+		      'text' => 'two',
+		      'par' => '1',
+		      'prev' => NULL,
+		    ),
+		    2 => 
+		    array (
+		      'row_id' => '3',
+		      'text' => 'three',
+		      'par' => '2',
+		      'prev' => NULL,
+		      'lmb' => '9813a8c6bd63eeb33b3573573636de6d',
+		      'lm' => '2012-04-18 05:34:190.15526800',
+		    ),
+		    3 => 
+		    array (
+		      'row_id' => 7,
+		      'text' => '',
+		      'par' => '2',
+		      'prev' => '3',
+		      'lmb' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'lm' => '2012-04-18 06:15:410.80870000',
+		    ),
+		    4 => 
+		    array (
+		      'row_id' => 8,
+		      'text' => 'what',
+		      'par' => '2',
+		      'prev' => '7',
+		      'lmb' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'lm' => '2012-04-18 06:15:410.78905200',
+		    )
+		  ),
+		  'users' => 
+		  array (
+		    0 => 
+		    array (
+		      'user_id' => 'ae8b5fae8c4313e4ff6a7407caa8b34e',
+		      'stamp' => '2009-06-18 02:09:330.87787700',
+		      'row_id' => '3',
+		    ),
+		    1 => 
+		    array (
+		      'user_id' => '0b957ab1ede427c9c2608e1e6d19b683',
+		      'stamp' => '2009-06-18 05:00:000.53217300',
+		      'row_id' => '3',
+		    ),
+		    2 => 
+		    array (
+		      'user_id' => '9813a8c6bd63eeb33b3573573636de6d',
+		      'stamp' => '2012-04-18 05:34:300.39666000',
+		      'row_id' => 11,
+		    ),
+		    3 => 
+		    array (
+		      'user_id' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'stamp' => '2012-04-18 06:15:520.57614200',
+		      'row_id' => '3',
+		    ),
+		  ),
+		));
+		
+		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
+
+		
+		$json = '[{ "delete_row" : true,
+				"dt" : "2012-04-18 06:15:570.33323900",
+				"row_id" : "2",
+				"user_id" : "11def8df83d98b5642dc664cce4bfaa0" }]';
+		$data = json_decode($json);
+		
+		
+		$row_id_to_delete = 2;
+		
+		//
+		// make sure input json is parsed correctly
+		$this->assertEqual($data[0]->row_id, $row_id_to_delete);
+		$this->assertEqual($data[0]->user_id, "11def8df83d98b5642dc664cce4bfaa0");
+
+		// ignore deleted rows
+		$this->assertEqual(count($listotron->getAllRows()), 5);
+
+
+		//
+		// validate some of the logic
+		// that's inside the delete function
+		//
+		// we'll reproduce pieces here, as well as test
+		// the actual delete function
+
+		$row = $listotron->getRow($row_id_to_delete);
+		$kids = $listotron->getAllKids($row);
+		$lastkid = $listotron->getLastKid($row);
+		
+		$this->assertNotNull($row);
+		$this->assertEqual($row["row_id"], $row_id_to_delete);
+		$this->assertTrue(is_array($kids));
+		$this->assertEqual(count($kids), 3);
+		$this->assertNull($row["prev"]);
+		
+		//
+		// ok, now delete the actual row
+		// and validate the structure afterwards
+		$out = $listotron->delete($data[0]->row_id, $data[0]->user_id);
+		
+		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
+		
+		foreach($kids as $kid){
+			$kid = $listotron->getRow($kid["row_id"]);
+			$this->assertEqual($kid["par"], $row["par"]);
+		}
+		
+		
+		$row7 = $listotron->getRow(7);
+		$this->assertNotNull($row7["par"]);
+	}
+
+
 };
 
 
