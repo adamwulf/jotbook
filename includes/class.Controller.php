@@ -47,7 +47,7 @@ class Controller{
 				$out = array();
 				$out["error"] = false;
 				$out["dt"] = $listotron->getNOW();
-				$out["rows"] = $listotron->delete($data[$i]->row_id, $data[$i]->user_id);;
+				$out["rows"] = $listotron->delete($data[$i]->row_id, $data[$i]->user_id);
 			}else if(isset($data[$i]->insert_after)){
 				// insert a row after the input row
 				
