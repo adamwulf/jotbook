@@ -189,6 +189,8 @@ class Listotron{
 		$rows = array();
 		
 		$row = $this->getRow($row_id);
+		$prev_row = $this->getRow($row["prev"]);
+		$prev_lastkid = $this->getLastKid($prev_row);
 		$kids = $this->getAllKids($row);
 		$lastkid = $this->getLastKid($row);
 		
@@ -197,6 +199,9 @@ class Listotron{
 			if(!$this->isDeletedHuh($kids[$i])){
 				if($row["prev"] != null){
 					$kids[$i] = $this->updateRow($kids[$i]["row_id"], "par", $row["prev"]);
+					if($prev_lastkid && $kids[$i]["prev"] == null){
+						$kids[$i] = $this->updateRow($kids[$i]["row_id"], "prev", $prev_lastkid["row_id"]);
+					}
 				}else{
 					$kids[$i] = $this->updateRow($kids[$i]["row_id"], "par", $row["par"]);
 				}

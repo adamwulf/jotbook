@@ -864,6 +864,12 @@ class TestListotron extends UnitTestCase{
 				
 		$out = $listotron->delete($data[0]->row_id, $data[0]->user_id);
 		
+		$txt_after = $listotron->getHumanReadable();
+		
+		print_r($txt_after);
+
+		
+		
 		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
 		
 		foreach($kids as $kid){
