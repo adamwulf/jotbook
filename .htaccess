@@ -1,0 +1,28 @@
+# Turn on URL rewriting
+RewriteEngine On
+
+# Installation directory
+RewriteBase /
+
+# Protect hidden files from being viewed
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+
+# Protect application and system files from being viewed
+RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
+
+RewriteRule ^list/([a-zA-Z0-9]*)$ list/$1/ [R,L]
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule ^list/(([a-zA-Z0-9]*))$ index.php/?list_id=$1 [QSA,L]
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule ^list/([a-zA-Z0-9]*)/ajax.php ajax.php/?list_id=$1 [QSA,L]
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule ^list/([a-zA-Z0-9]*)/(.*) $2 [QSA,L]
+
+
+

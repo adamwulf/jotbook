@@ -7,6 +7,9 @@ include "include.php";
 
 try{
 	
+	
+	$list_id = readFormValue("list_id", $_REQUEST);
+	
 	//
 	// get the JSON input and parse
 	$json_in = "";
@@ -30,7 +33,7 @@ try{
 	////////////////////////////////////////////
 	////////////////////////////////////////////
 
-	$filename = dirname(__FILE__) . "/list.data";
+	$filename = dirname(__FILE__) . "/../data/" . $list_id . ".data";
 	$list = new Listotron($filename);
 	
 	$error_file = "error." . time() . ".log";

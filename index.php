@@ -5,12 +5,12 @@
 		if(typeof(console.log) == "undefined") console.log = function(){}
 		</script>
 <!--		<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
-		<script src="includes/jquery.js" type="text/javascript"></script>
-		<script src="includes/bajax.js" type="text/javascript"></script>
-		<script src="model.js" type="text/javascript"></script>
-		<script src="util.js" type="text/javascript"></script>
-		<script src="devview.js" type="text/javascript"></script>
-		<script src="controller.js" type="text/javascript"></script>
+		<script src="/includes/jquery.js" type="text/javascript"></script>
+		<script src="/includes/bajax.js" type="text/javascript"></script>
+		<script src="/model.js" type="text/javascript"></script>
+		<script src="/util.js" type="text/javascript"></script>
+		<script src="/devview.js" type="text/javascript"></script>
+		<script src="/controller.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(function(){
 				var model = new $.Model();
