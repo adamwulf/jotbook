@@ -866,10 +866,6 @@ class TestListotron extends UnitTestCase{
 		
 		$txt_after = $listotron->getHumanReadable();
 		
-		print_r($txt_after);
-
-		
-		
 		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
 		
 		foreach($kids as $kid){
@@ -878,10 +874,11 @@ class TestListotron extends UnitTestCase{
 		}
 		
 		
-		$row1 = $listotron->getRow(2);
-		$row2 = $listotron->getRow(8);
-		$this->assertTrue($row1["par"] != $row2["par"] || $row1["prev"] != $row2["prev"]);
-
+		$row2 = $listotron->getRow(2);
+		$row8 = $listotron->getRow(8);
+		$this->assertTrue($row2["par"] != $row8["par"] || $row2["prev"] != $row8["prev"]);
+		$this->assertEqual($row2["par"], $row8["par"]);
+		$this->assertEqual($row2["row_id"], $row8["prev"]);
 
 		
 	}
