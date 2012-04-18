@@ -158,7 +158,7 @@ class Listotron{
 	/**
 	 * returns the last kid of the input row
 	 */
-	protected function getLastKid($row){
+	public function getLastKid($row){
 		for($i=0;$i<count($this->data["rows"]);$i++){
 			if(!$this->isDeletedHuh($this->data["rows"][$i])){
 				if($this->data["rows"][$i]["par"] == $row["row_id"]){
@@ -172,7 +172,7 @@ class Listotron{
 	/**
 	 * returns all kids of a row
 	 */
-	protected function getAllKids($row){
+	public function getAllKids($row){
 		$rows = array();
 		for($i=0;$i<count($this->data["rows"]);$i++){
 			if(!$this->isDeletedHuh($this->data["rows"][$i])){
@@ -187,7 +187,7 @@ class Listotron{
 	
 	public function delete($row_id, $user_id){
 		$rows = array();
-			
+		
 		$row = $this->getRow($row_id);
 		$kids = $this->getAllKids($row);
 		$lastkid = $this->getLastKid($row);
@@ -534,15 +534,40 @@ class Listotron{
 		$ok = true;
 		for($j=0;$j<count($this->data["rows"]);$j++){
 			$row = $this->data["rows"][$j];
-			$seen_so_far[] = $row["row_id"];
-			$ok = $ok && ($row["par"] == null  || in_array($row["par"], $seen_so_far));
-			$ok = $ok && ($row["prev"] == null || in_array($row["prev"], $seen_so_far));
-			if($row["prev"] != null){
-				$row2 = $this->getRow($row["prev"]);
-				$ok = $ok && $row2["par"] == $row["par"];
+			if(!isset($row["del"])){
+				$seen_so_far[] = $row["row_id"];
+				$ok = $ok && ($row["par"] == null  || in_array($row["par"], $seen_so_far));
+				$ok = $ok && ($row["prev"] == null || in_array($row["prev"], $seen_so_far));
+				if($row["prev"] != null){
+					$row2 = $this->getRow($row["prev"]);
+					$ok = $ok && $row2["par"] == $row["par"];
+				}
+	//			print_r($row);
 			}
-//			print_r($row);
 		}
+		
+		//
+		// make sure two rows don't share the same
+		// parent and previous node
+		for($j=0;$j<count($this->data["rows"]);$j++){
+			$row1 = $this->data["rows"][$j];
+			if(!isset($row1["del"])){
+				for($i=0;$i<count($this->data["rows"]);$i++){
+					$row2 = $this->data["rows"][$i];
+					if(!isset($row2["del"]) && $row1["row_id"] != $row2["row_id"]){
+						if($row1["par"] == $row2["par"] && $row1["prev"] == $row2["prev"]){
+							// uh oh, the list is invalid,
+							// two nodes share the same parent and
+							// previous node
+							$ok = false;
+						}
+					}
+				}
+			}
+		}
+		
+		
+		
 		return $ok;
 	}
 	

@@ -822,7 +822,8 @@ class TestListotron extends UnitTestCase{
 		  ),
 		));
 		
-		
+		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
+
 		
 		$json = '[{ "delete_row" : true,
 				"dt" : "2012-04-18 06:15:570.33323900",
@@ -830,49 +831,31 @@ class TestListotron extends UnitTestCase{
 				"user_id" : "11def8df83d98b5642dc664cce4bfaa0" }]';
 		$data = json_decode($json);
 		
+		
+		$row_id = 3;
+		
+		//
+		// make sure input json is parsed correctly
+		$this->assertEqual($data[0]->row_id, $row_id);
+		$this->assertEqual($data[0]->user_id, "11def8df83d98b5642dc664cce4bfaa0");
+
+		// ignore deleted rows
+		$this->assertEqual(count($listotron->getAllRows()), 9);
+
+		$row = $listotron->getRow($row_id);
+		$kids = $listotron->getAllKids($row);
+		$lastkid = $listotron->getLastKid($row);
+		
+		$this->assertNotNull($row);
+		$this->assertEqual($row["row_id"], 3);
+		$this->assertTrue(is_array($kids));
+		$this->assertEqual(count($kids), 2);
+		
+		
 		$out = $listotron->delete($data[0]->row_id, $data[0]->user_id);
-
-		$ok_after = $listotron->isValidHuh();
 		
-		$this->assertTrue($ok_after, "list should be valid");
+		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
 		
-		echo "ok? $ok_after <<";
-
-		
-		$user1 = md5(rand() . md5(rand()));
-		$user2 = md5(rand() . md5(rand()));
-		$user3 = md5(rand() . md5(rand()));
-		$then = $listotron->getNOW();
-		usleep(500);
-		$listotron->updateNOW();
-		$lmb = json_decode("{ \"$user3\" : \"$then\" }");
-		$now = $listotron->getNOW();
-		
-		// modify the List
-		$rows = $listotron->outdent(4, $user1);
-
-		// now get the rows changed by not me
-		// since before NOW()
-		$rows = $listotron->getAllRowsSince($lmb, $user2);
-		$this->assertEqual(count($rows), 3);
-		
-		$this->assertEqual($rows[0]["row_id"], 4);
-		$this->assertEqual($rows[0]["par"], null);
-		$this->assertEqual($rows[0]["prev"], 1);
-		$this->assertEqual($rows[0]["lm"], $now);
-		$this->assertEqual($rows[0]["lmb"], $user1);
-		
-		$this->assertEqual($rows[1]["row_id"], 5);
-		$this->assertEqual($rows[1]["par"], 4);
-		$this->assertEqual($rows[1]["prev"], null);
-		$this->assertEqual($rows[1]["lm"], $now);
-		$this->assertEqual($rows[1]["lmb"], $user1);
-
-		$this->assertEqual($rows[2]["row_id"], 6);
-		$this->assertEqual($rows[2]["par"], 4);
-		$this->assertEqual($rows[2]["prev"], 5);
-		$this->assertEqual($rows[2]["lm"], $now);
-		$this->assertEqual($rows[2]["lmb"], $user1);
 	}
 
 };
