@@ -479,15 +479,20 @@ class Listotron{
 	 * return just the rows that have been modified
 	 *
 	 * this function will likely need revisiting later
+	 *
+	 * $lmbobj is an object with keys that are user ids and values that are timestamps
+	 * this represents the client's last known modification dates for each user
 	 */
-	public function getAllRowsSince($lmbarr, $user_id){
+	public function getAllRowsSince($lmbobj, $user_id){
 		$rows = array();
 		for($j=0;$j<count($this->data["rows"]);$j++){
-			$lmb = $this->data["rows"][$j]["lmb"]; // the user who modified the row
-			$lm = $this->data["rows"][$j]["lm"]; // the last dt the row was modified
-			
-			if( $lmb != $user_id && (isset($lmbarr->$lmb) && $lm > $lmbarr->$lmb || $lmb && !isset($lmbarr->$lmb))){
-				$rows[] = $this->data["rows"][$j];
+			if(isset($this->data["rows"][$j]["lmb"]) && isset($this->data["rows"][$j]["lm"])){
+				$lmb = $this->data["rows"][$j]["lmb"]; // the user who modified the row
+				$lm = $this->data["rows"][$j]["lm"]; // the last dt the row was modified
+				
+				if( $lmb != $user_id && (isset($lmbobj->$lmb) && $lm > $lmbobj->$lmb || $lmb && !isset($lmbobj->$lmb))){
+					$rows[] = $this->data["rows"][$j];
+				}
 			}
 		}
 		return $rows;
