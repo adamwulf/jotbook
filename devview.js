@@ -326,6 +326,9 @@ jQuery.extend({
 			
 			if(rowli.getRow().getParentId()){
 				var par = rows.get(rowli.getRow().getParentId());
+				if(!par){
+					alert("can't find parent of " + rowli.getRowId() + " id: " + rowli.getRow().getParentId());
+				}
 				par.updateKid(rowli);
 			}else{
 				list.updateKid(rowli);
