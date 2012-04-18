@@ -555,7 +555,7 @@ class Listotron{
 				for($i=0;$i<count($this->data["rows"]);$i++){
 					$row2 = $this->data["rows"][$i];
 					if(!isset($row2["del"]) && $row1["row_id"] != $row2["row_id"]){
-						if($row1["par"] == $row2["par"] && $row1["prev"] == $row2["prev"]){
+						if(($row1["par"] == $row2["par"]) && ($row1["prev"] == $row2["prev"])){
 							// uh oh, the list is invalid,
 							// two nodes share the same parent and
 							// previous node
@@ -565,8 +565,6 @@ class Listotron{
 				}
 			}
 		}
-		
-		
 		
 		return $ok;
 	}

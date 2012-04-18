@@ -665,13 +665,11 @@ class TestListotron extends UnitTestCase{
 
 
 	/**
-	 * test returning the last edited rows
-	 * this test assumes that the user
-	 * is asking for edited rows and it
-	 * /does not/ know about the user
-	 * who edited them
+	 * test deleting row. this test used
+	 * to create an invalid list after the
+	 * delete operation
 	 */
-	public function test_failed_delete(){
+	public function test_error_1334729757(){
 		$listotron = new Listotron(array (
 		  'rows' => 
 		  array (
@@ -832,17 +830,25 @@ class TestListotron extends UnitTestCase{
 		$data = json_decode($json);
 		
 		
-		$row_id = 3;
+		$row_id_to_delete = 3;
 		
 		//
 		// make sure input json is parsed correctly
-		$this->assertEqual($data[0]->row_id, $row_id);
+		$this->assertEqual($data[0]->row_id, $row_id_to_delete);
 		$this->assertEqual($data[0]->user_id, "11def8df83d98b5642dc664cce4bfaa0");
 
 		// ignore deleted rows
 		$this->assertEqual(count($listotron->getAllRows()), 9);
 
-		$row = $listotron->getRow($row_id);
+
+		//
+		// validate some of the logic
+		// that's inside the delete function
+		//
+		// we'll reproduce pieces here, as well as test
+		// the actual delete function
+
+		$row = $listotron->getRow($row_id_to_delete);
 		$kids = $listotron->getAllKids($row);
 		$lastkid = $listotron->getLastKid($row);
 		
@@ -850,11 +856,27 @@ class TestListotron extends UnitTestCase{
 		$this->assertEqual($row["row_id"], 3);
 		$this->assertTrue(is_array($kids));
 		$this->assertEqual(count($kids), 2);
+		$this->assertTrue($row["prev"] != null);
 		
-		
+		//
+		// ok, now delete the actual row
+		// and validate the structure afterwards
+				
 		$out = $listotron->delete($data[0]->row_id, $data[0]->user_id);
 		
 		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
+		
+		foreach($kids as $kid){
+			$kid = $listotron->getRow($kid["row_id"]);
+			$this->assertEqual($kid["par"], $row["prev"]);
+		}
+		
+		
+		$row1 = $listotron->getRow(2);
+		$row2 = $listotron->getRow(8);
+		$this->assertTrue($row1["par"] != $row2["par"] || $row1["prev"] != $row2["prev"]);
+
+
 		
 	}
 
