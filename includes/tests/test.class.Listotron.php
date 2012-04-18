@@ -668,6 +668,26 @@ class TestListotron extends UnitTestCase{
 	 * test deleting row. this test used
 	 * to create an invalid list after the
 	 * delete operation
+	 *
+	 *
+	 * BEFORE
+	 * root
+	 *   - node1
+	 *      - kid1
+	 *      - kid2
+	 *   - node2      <= delete this one
+	 *      - kid3
+	 *      - kid4
+	 *
+	 *
+	 * AFTER
+	 * root
+	 *   - node1
+	 *      - kid1
+	 *      - kid2
+	 *      - kid3
+	 *      - kid4
+	 */
 	 */
 	public function test_error_1334729757(){
 		$listotron = new Listotron(array (
@@ -885,6 +905,21 @@ class TestListotron extends UnitTestCase{
 	 * a previous sibling without children, is deleted
 	 *
 	 * the sibling should inherit all the kids
+	 *
+	 *
+	 * BEFORE
+	 * root
+	 *   - node1
+	 *   - node2      <= delete this one
+	 *      - kid1
+	 *      - kid2
+	 *
+	 *
+	 * AFTER
+	 * root
+	 *   - node1
+	 *      - kid1
+	 *      - kid2
 	 */
 	public function test_delete_node_with_prev_sibling(){
 		$listotron = new Listotron(array (
@@ -1102,6 +1137,21 @@ class TestListotron extends UnitTestCase{
 	 * a no siblings, is deleted
 	 *
 	 * all of the kids should be inherited by the parent
+	 *
+	 * BEFORE
+	 *
+	 * root
+	 *   - node       <= delete this guy
+	 *      - kid1
+	 *      - kid2
+	 *      - kid3
+	 *
+	 *
+	 * AFTER
+	 * root
+	 *   - kid1
+	 *   - kid2
+	 *   - kid3
 	 */
 	public function test_delete_node_with_no_siblings_with_kids(){
 		$listotron = new Listotron(array (
