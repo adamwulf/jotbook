@@ -1,0 +1,538 @@
+[04-Jun-2006 21:19:50] E_WARNING: Missing argument 4 for Aurora::__construct() in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 55
+[04-Jun-2006 21:19:50] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to Aurora::__construct must be a ALogger' in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php:66
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(66): Aurora::__construct()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.php(9): Aurora->__construct(Object(TestMySQLConn), Object(BogusMailMan), Object(TestCookieJar))
+#2 /local/home/aurora/public_html/simpletest/runner.php(59): TestAurora->test_create_aurora()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_create_aur...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_create_aur...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_create_aur...')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/home/aurora/public_html/si in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 66
+[04-Jun-2006 21:21:49] E_WARNING: Missing argument 4 for Aurora::__construct() in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 55
+[04-Jun-2006 21:21:49] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to Aurora::__construct must be a ALogger' in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php:66
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(66): Aurora::__construct()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(15): Aurora->__construct(Object(MySQLConn), Object(BogusMailMan), Object(TestCookieJar))
+#2 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_sign_up_an...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_sign_up_an...')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/hom in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 66
+[04-Jun-2006 21:22:47] E_WARNING: Missing argument 4 for Aurora::__construct() in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 55
+[04-Jun-2006 21:22:47] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to Aurora::__construct must be a ALogger' in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php:66
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(66): Aurora::__construct()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.Member.php(9): Aurora->__construct(Object(TestMySQLConn), Object(BogusMailMan), Object(TestCookieJar))
+#2 /local/home/aurora/public_html/simpletest/runner.php(59): TestMember->test_get_user_properties()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_get_user_p...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_get_user_p...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_get_user_p...')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/home/aurora/public_h in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 66
+[04-Jun-2006 21:23:19] E_WARNING: Missing argument 4 for Aurora::__construct() in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 55
+[04-Jun-2006 21:23:19] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to Aurora::__construct must be a ALogger' in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php:66
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(66): Aurora::__construct()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.php(9): Aurora->__construct(Object(TestMySQLConn), Object(BogusMailMan), Object(TestCookieJar))
+#2 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManager->test_add_delete_calendar()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/ho in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 66
+[04-Jun-2006 21:23:57] E_WARNING: Missing argument 4 for Aurora::__construct() in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 55
+[04-Jun-2006 21:23:57] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to Aurora::__construct must be a ALogger' in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php:66
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(66): Aurora::__construct()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.realDB.php(25): Aurora->__construct(Object(MySQLConn), Object(BogusMailMan), Object(TestCookieJar))
+#2 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManagerRealDB->test_add_delete_calendar()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 66
+[04-Jun-2006 21:24:25] E_WARNING: Missing argument 4 for Aurora::__construct() in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 55
+[04-Jun-2006 21:24:25] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to Aurora::__construct must be a ALogger' in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php:66
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(66): Aurora::__construct()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.php(9): Aurora->__construct(Object(TestMySQLConn), Object(BogusMailMan), Object(TestCookieJar))
+#2 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendar->test_modify_calendar()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_modify_cal...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_modify_cal...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_modify_cal...')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/home/aurora/public_h in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 66
+[04-Jun-2006 21:25:06] E_WARNING: Missing argument 4 for Aurora::__construct() in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 55
+[04-Jun-2006 21:25:06] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to Aurora::__construct must be a ALogger' in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php:66
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(66): Aurora::__construct()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.realDB.php(26): Aurora->__construct(Object(MySQLConn), Object(BogusMailMan), Object(TestCookieJar))
+#2 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarRealDB->test_modify_calendar()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_modify_cal...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_modify_cal...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_modify_cal...')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/home/auror in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 66
+[04-Jun-2006 21:25:32] E_WARNING: Missing argument 4 for Aurora::__construct() in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 55
+[04-Jun-2006 21:25:32] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to Aurora::__construct must be a ALogger' in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php:66
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(66): Aurora::__construct()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.Event.php(9): Aurora->__construct(Object(TestMySQLConn), Object(BogusMailMan), Object(TestCookieJar))
+#2 /local/home/aurora/public_html/simpletest/runner.php(59): TestEvent->test_edit_event()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_edit_event')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_edit_event')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_edit_event')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/home/aurora/public_html/simpletest/test_ in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 66
+[11-Jul-2006 00:11:02] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Table 'aurora_test.share_cal' doesn't exist' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:67
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(67): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(128): MySQLConn->query('SELECT * FROM `...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.realDB.php(118): CalendarManager->getCalendarsFor(Object(Member))
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManagerRealDB->test_get_calendar()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_get_calend...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_get_calend...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_get_calend...')
+#7 /local/home/aurora/public_ht in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 67
+[19-Jul-2006 08:58:33] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'query when not expected: SELECT `calendars`.cal_id AS cal_id, `share_cal`.name AS name, `share_cal`.description AS description, `share_cal`.color AS color, `calendars`.owner AS owner, `calendars`.added_on AS added_on FROM `calendars` INNER JOIN `share_cal` ON `calendars`.cal_id=`share_cal`.cal_id WHERE `share_cal`.user_id='5334'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:40
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(40): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(135): TestMySQLConn->query('SELECT `calenda...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.php(125): CalendarManager->getCalendarsFor(Object(Member))
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManager->test_get_calendar()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke(' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 40
+[19-Jul-2006 09:01:35] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'share_cal.name' in 'field list'' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:67
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(67): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(135): MySQLConn->query('SELECT `calenda...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.realDB.php(119): CalendarManager->getCalendarsFor(Object(Member))
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManagerRealDB->test_get_calendar()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_get_calend...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_get_calend...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_get_calend...')
+#7 /local/home/aurora/publi in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 67
+[19-Jul-2006 09:03:22] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'query when not expected: UPDATE `share_cal` SET `name`='Different Name' WHERE cal_id='2143' AND user_id='-1'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:40
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(40): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(131): TestMySQLConn->query('UPDATE `share_c...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(89): CustomCalendar->setVarVal('name', 'Different Name')
+#3 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.php(35): CustomCalendar->setName('Different Name')
+#4 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendar->test_modify_calendar()
+#5 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_modify_cal...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 40
+[19-Jul-2006 09:08:57] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'query when not expected: UPDATE `share_cal` SET `name`='Different Name' WHERE cal_id='2143' AND user_id='-1'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:40
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(40): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(131): TestMySQLConn->query('UPDATE `share_c...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(89): CustomCalendar->setVarVal('name', 'Different Name')
+#3 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.php(35): CustomCalendar->setName('Different Name')
+#4 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendar->test_modify_calendar()
+#5 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_modify_cal...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 40
+[08-Aug-2006 22:23:17] PHP Fatal error:  Call to a member function getMysql() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 53
+[08-Aug-2006 22:24:05] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'permhash' in 'where clause'' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:67
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(67): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(53): MySQLConn->query('SELECT COUNT(*)...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(163): Aurora->getUniqueHash()
+#3 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(22): Aurora->signUp('robert@is.yourm...', 'robert', 'foowey')
+#4 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#5 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_sign_up_an...')
+#7 /local/home/aurora/public_html/simpletest/runner.php in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 67
+[08-Aug-2006 23:27:19] PHP Fatal error:  Call to a member function toString() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/Recur/test.class.DailyRecur.php on line 63
+[08-Aug-2006 23:29:00] PHP Fatal error:  Call to undefined function:  date_default_timezone_set() in /local/home/aurora/include.php on line 38
+[22-Aug-2006 05:05:10] PHP Fatal error:  Call to a member function getMysql() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php on line 165
+[22-Aug-2006 05:05:24] PHP Fatal error:  Call to a member function getMysql() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php on line 165
+[22-Aug-2006 05:06:36] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected INSERT
+given: SELECT COUNT(*) AS count FROM tasks WHERE hash='3ff8ce490ac919c4f59724904603937b'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(165): TestMySQLConn->query('SELECT COUNT(*)...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.php(94): CustomCalendar->addEvent(Object(SimpleEvent))
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendar->test_add_event()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_event')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_event')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_event')
+#7 /loc in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[22-Aug-2006 05:09:29] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected DELETE
+given: UPDATE `events` SET deleted_on='2006-08-22 05:09:29' WHERE event_id='9452' AND cal_id='2143'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(238): TestMySQLConn->query('UPDATE `events`...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.php(186): CustomCalendar->deleteEvent(9452)
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendar->test_delete_event()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_delete_eve...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_delete_eve...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_delete_e in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[22-Aug-2006 05:10:24] PHP Fatal error:  Call to a member function getMysql() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php on line 262
+[22-Aug-2006 05:10:57] PHP Fatal error:  Call to a member function getMysql() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php on line 262
+[22-Aug-2006 05:13:12] PHP Fatal error:  Call to a member function getMysql() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php on line 262
+[22-Aug-2006 05:14:32] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected INSERT
+given: SELECT COUNT(*) AS count FROM tasks WHERE hash='8bfb25f7c0bd8cb9f1dd6e658cc78e5f'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(262): TestMySQLConn->query('SELECT COUNT(*)...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.php(236): CustomCalendar->addTask(Object(SimpleTask))
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendar->test_add_task()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_task')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_task')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_task')
+#7 /local/ho in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[22-Aug-2006 05:15:15] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected INSERT
+given: SELECT COUNT(*) AS count FROM tasks WHERE hash='23203940fe48a822d5ac3ddf4b928d5f'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(262): TestMySQLConn->query('SELECT COUNT(*)...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.php(236): CustomCalendar->addTask(Object(SimpleTask))
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendar->test_add_task()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_task')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_task')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_task')
+#7 /local/ho in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[22-Aug-2006 05:15:55] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected DELETE
+given: UPDATE `tasks` SET deleted_on='2006-08-22 05:15:55' WHERE task_id='9452' AND cal_id='2143'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(330): TestMySQLConn->query('UPDATE `tasks` ...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.php(328): CustomCalendar->deleteTask(9452)
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendar->test_delete_task()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_delete_tas...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_delete_tas...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_delete_tas.. in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[22-Aug-2006 05:16:42] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'last_modified' in 'field list'' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:67
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(67): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Calendar.php(174): MySQLConn->query('INSERT INTO `ev...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.Calendar.realDB.php(91): CustomCalendar->addEvent(Object(SimpleEvent))
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarRealDB->test_add_event()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_event')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_event')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_event')
+#7 /local/home/aurora/public_html/simpletest/test_case.php(96): Simp in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 67
+[25-Aug-2006 04:37:35] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'deleted_on' in 'where clause'' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:67
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(67): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(239): MySQLConn->query('UPDATE `calenda...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(475): CalendarManager->notifyUserDeleted(Object(Member))
+#3 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(406): Aurora->notifyUserDeleted(Object(Member))
+#4 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(90): Aurora->deleteUser(Object(Member))
+#5 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#6 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#7 /local/home/aurora/public_html/sim in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 67
+[25-Aug-2006 04:37:51] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'deleted_on' in 'where clause'' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:67
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(67): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(239): MySQLConn->query('UPDATE `calenda...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(475): CalendarManager->notifyUserDeleted(Object(Member))
+#3 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(406): Aurora->notifyUserDeleted(Object(Member))
+#4 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(90): Aurora->deleteUser(Object(Member))
+#5 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#6 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#7 /local/home/aurora/public_html/sim in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 67
+[25-Aug-2006 04:39:49] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected DELETE
+given: UPDATE `calendars` SET deleted_on='2006-08-25 04:39:49' WHERE cal_id='2143' deleted_on='0000-00-00 00:00:00'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(221): TestMySQLConn->query('UPDATE `calenda...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.php(59): CalendarManager->deleteCalendar(2143)
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManager->test_add_delete_calendar()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): Si in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[25-Aug-2006 04:40:53] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'deleted_on='0000-00-00 00:00:00'' at line 1' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:67
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(67): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(221): MySQLConn->query('UPDATE `calenda...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.realDB.php(61): CalendarManager->deleteCalendar(1)
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManagerRealDB->test_add_delete_calendar()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#6 /local/home/aurora/p in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 67
+[03-Sep-2006 00:59:35] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Table 'aurora_test.reminders_event' doesn't exist' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:67
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(67): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.ReminderManager.php(99): MySQLConn->query('UPDATE `reminde...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(497): ReminderManager->notifyUserDeleted(Object(Member))
+#3 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(428): Aurora->notifyUserDeleted(Object(Member))
+#4 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(90): Aurora->deleteUser(Object(Member))
+#5 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#6 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#7 /local/home/aurora/public_html/ in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 67
+[04-Sep-2006 16:39:18] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected INSERT
+given: SELECT COUNT(*) AS count FROM calendars WHERE hash='055141b1930db278cfbb57b2328f7379'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(76): TestMySQLConn->query('SELECT COUNT(*)...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.php(32): CalendarManager->addCalendarFor(Object(Member), 'My Events')
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManager->test_add_delete_calendar()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): Sim in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[04-Sep-2006 16:41:39] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected INSERT
+given: SELECT COUNT(*) AS count FROM calendars WHERE hash='94599d8d9cfbfa07725b270db4754dd1'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(76): TestMySQLConn->query('SELECT COUNT(*)...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.php(32): CalendarManager->addCalendarFor(Object(Member), 'My Events')
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManager->test_add_delete_calendar()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): Sim in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[04-Sep-2006 16:42:20] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'expected INSERT
+given: SELECT COUNT(*) AS count FROM calendars WHERE hash='3350dd32c14dd498497b0989c3d15b0e'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:37
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(37): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php(76): TestMySQLConn->query('SELECT COUNT(*)...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.php(32): CalendarManager->addCalendarFor(Object(Member), 'My Events')
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManager->test_add_delete_calendar()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): Sim in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 37
+[25-Sep-2006 02:46:45] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Table 'aurora_test.reminders' doesn't exist' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:71
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(71): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.ReminderManager.php(462): MySQLConn->query('UPDATE `reminde...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(518): ReminderManager->notifyUserDeleted(Object(Member))
+#3 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(449): Aurora->notifyUserDeleted(Object(Member))
+#4 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(90): Aurora->deleteUser(Object(Member))
+#5 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#6 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#7 /local/home/aurora/public_html/simpl in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 71
+[25-Sep-2006 02:47:06] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Table 'aurora_test.reminders' doesn't exist' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:71
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(71): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.ReminderManager.php(462): MySQLConn->query('UPDATE `reminde...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(518): ReminderManager->notifyUserDeleted(Object(Member))
+#3 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(449): Aurora->notifyUserDeleted(Object(Member))
+#4 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(90): Aurora->deleteUser(Object(Member))
+#5 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#6 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#7 /local/home/aurora/public_html/simpl in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 71
+[25-Sep-2006 02:48:38] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'query when not expected: SELECT `reminders`.*, `tasks`.due, `tasks`.neverdue FROM `reminders` LEFT JOIN `tasks` ON `reminders`.obj_id = `tasks`.task_id WHERE `reminders`.type='task' AND `reminders`.user_id='1'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:40
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php(40): TestMySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.ReminderManager.php(467): TestMySQLConn->query('SELECT `reminde...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(528): ReminderManager->notifyTimeZoneUpdated(Object(Member))
+#3 /local/home/aurora/public_html/library/Aurora/Model/class.Member.php(163): Aurora->notifyTimeZoneUpdated(Object(Member))
+#4 /local/home/aurora/public_html/library/Aurora/Model/test.class.Member.php(57): Member->setTimezone(-5)
+#5 /local/home/aurora/public_html/simpletest/runner.php(59): TestMember->test_get_use in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 40
+[22-Oct-2006 19:58:24] E_WARNING: mysqli_connect(): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (111) in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 44
+[22-Oct-2006 19:58:24] E_WARNING: mysqli_query() expects parameter 1 to be mysqli, boolean given in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 45
+[22-Oct-2006 19:58:24] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'could not connect to MySQL' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:48
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(48): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(7): MySQLConn->query('TRUNCATE TABLE ...')
+#2 /local/home/aurora/public_html/simpletest/runner.php(58): TestAuroraRealDB->setUp()
+#3 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_sign_up_an...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_sign_up_an...')
+#6 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/home/aurora/public_html/simpletest/test_case.php(537): TestAuroraRealDB->run(Object(TextReporter))
+#8 /local/home/aurora/p in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 48
+[23-Oct-2006 03:17:02] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'num_api_logins' in 'field list'' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:71
+Stack trace:
+#0 /local/home/aurora/public_html/library/IO/class.MySQLConn.php(71): MySQLConn::query()
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(299): MySQLConn->query('UPDATE `users` ...')
+#2 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(58): Aurora->logIn('robert', 'foowey')
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleErrorTrappingInvoker->invoke('test_sign_up_an...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_sign_up_an...')
+#7 /local/home/aurora/public_html/simpletest/test_case.p in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 71
+[19-Dec-2006 04:34:01] PHP Fatal error:  Cannot redeclare class teststyledelement in /local/home/aurora/public_html/library/ICal/test.class.iCal.php on line 14
+[19-Dec-2006 04:35:46] PHP Fatal error:  Cannot redeclare class teststyledelement in /local/home/aurora/public_html/library/ICal/test.class.iCal.php on line 14
+[19-Dec-2006 04:36:40] PHP Fatal error:  Cannot redeclare class teststyledelement in /local/home/aurora/public_html/library/ICal/test.class.iCal.php on line 14
+[19-Dec-2006 04:37:34] PHP Fatal error:  Call to a member function query() on a non-object in /local/home/aurora/public_html/library/ICal/class.iCal.php on line 68
+[19-Dec-2006 04:37:55] PHP Fatal error:  Cannot pass parameter 1 by reference in /local/home/aurora/public_html/library/ICal/test.class.iCal.php on line 10
+[10-May-2007 02:56:07] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'optional argument to CalendarManager::addCalendarFor must be a color string' in /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php:175
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.realDB.php(38): CalendarManager->addCalendarFor(Object(Member), 'My Events')
+#1 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManagerRealDB->test_add_delete_calendar()
+#2 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#3 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_add_delete...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/aurora/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object( in /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php on line 175
+[10-May-2007 02:56:41] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'optional argument to CalendarManager::addCalendarFor must be a color string' in /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php:175
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.realDB.php(38): CalendarManager->addCalendarFor(Object(Member), 'My Events')
+#1 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManagerRealDB->test_add_delete_calendar()
+#2 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#3 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_add_delete...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/aurora/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object( in /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php on line 175
+[10-May-2007 02:59:27] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'optional argument to CalendarManager::addCalendarFor must be a color string' in /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php:175
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/test.class.CalendarManager.realDB.php(38): CalendarManager->addCalendarFor(Object(Member), 'My Events')
+#1 /local/home/aurora/public_html/simpletest/runner.php(59): TestCalendarManagerRealDB->test_add_delete_calendar()
+#2 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#3 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_add_delete...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#5 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/aurora/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object( in /local/home/aurora/public_html/library/Aurora/Model/class.CalendarManager.php on line 175
+[18-May-2007 16:07:11] PHP Fatal error:  Class 'VexorAdminPanelPlugin' not found in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6
+[18-May-2007 16:08:16] PHP Fatal error:  Class 'VexorAdminPanelPlugin' not found in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6
+[18-May-2007 16:08:26] PHP Fatal error:  Class 'VexorAdminPanelPlugin' not found in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6
+[18-May-2007 16:09:25] PHP Fatal error:  Abstract function Plugin::getJS() cannot contain body in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.Plugin.php on line 12
+[18-May-2007 17:00:40] PHP Fatal error:  Class 'PluginManager' not found in /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php on line 104
+[18-May-2007 17:19:50] PHP Parse error:  syntax error, unexpected '}' in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 9
+[18-May-2007 17:20:12] E_WARNING: Missing argument 1 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 21
+[18-May-2007 17:20:12] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to VexorAdminPanelPlugin::__construct must be an array' in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php:23
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php(6): VexorAdminPanelPlugin->__construct()
+#1 /local/home/aurora/public_html/simpletest/runner.php(59): TestPlugins->test_plugin_functions()
+#2 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_plugin_fun...')
+#3 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_plugin_fun...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_plugin_fun...')
+#5 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/aurora/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object(TextReporter))
+#7 /local/home/auro in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 23
+[18-May-2007 17:21:54] PHP Fatal error:  Call to a member function get() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.PluginManager.php on line 46
+[18-May-2007 17:22:17] PHP Fatal error:  Call to a member function get() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.PluginManager.php on line 46
+[18-May-2007 17:25:24] PHP Fatal error:  Call to a member function getId() on a non-object in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.Plugins.php on line 58
+[09-Jun-2007 04:25:38] E_WARNING: Missing argument 1 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 29
+[09-Jun-2007 04:25:38] E_WARNING: Missing argument 2 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 29
+[09-Jun-2007 04:25:38] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to VexorAdminPanelPlugin::__construct must be an Aurora' in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php:31
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php(6): VexorAdminPanelPlugin->__construct()
+#1 /local/home/aurora/public_html/simpletest/runner.php(59): TestVexorAdminPanelPlugin->test_plugin_functions()
+#2 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_plugin_fun...')
+#3 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_plugin_fun...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_plugin_fun...')
+#5 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/aurora/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object(TextReporter))
+#7 / in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 31
+[09-Jun-2007 04:27:21] E_WARNING: Missing argument 1 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 29
+[09-Jun-2007 04:27:21] E_WARNING: Missing argument 2 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 29
+[09-Jun-2007 04:27:21] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to VexorAdminPanelPlugin::__construct must be an Aurora' in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php:31
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php(6): VexorAdminPanelPlugin->__construct()
+#1 /local/home/aurora/public_html/simpletest/runner.php(59): TestVexorAdminPanelPlugin->test_plugin_functions()
+#2 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_plugin_fun...')
+#3 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_plugin_fun...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_plugin_fun...')
+#5 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/aurora/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object(TextReporter))
+#7 / in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 31
+[09-Jun-2007 04:28:06] E_WARNING: Missing argument 1 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 29
+[09-Jun-2007 04:28:06] E_WARNING: Missing argument 2 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 29
+[09-Jun-2007 04:28:06] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to VexorAdminPanelPlugin::__construct must be an Aurora' in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php:31
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php(6): VexorAdminPanelPlugin->__construct()
+#1 /local/home/aurora/public_html/simpletest/runner.php(59): TestVexorAdminPanelPlugin->test_plugin_functions()
+#2 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_plugin_fun...')
+#3 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_plugin_fun...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_plugin_fun...')
+#5 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/aurora/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object(TextReporter))
+#7 / in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 31
+[09-Jun-2007 04:29:20] E_WARNING: Missing argument 1 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 29
+[09-Jun-2007 04:29:20] E_WARNING: Missing argument 2 for VexorAdminPanelPlugin::__construct(), called in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 6 and defined in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 29
+[09-Jun-2007 04:29:20] PHP Fatal error:  Uncaught exception 'IllegalArgumentException' with message 'argument to VexorAdminPanelPlugin::__construct must be an Aurora' in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php:31
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php(6): VexorAdminPanelPlugin->__construct()
+#1 /local/home/aurora/public_html/simpletest/runner.php(59): TestVexorAdminPanelPlugin->test_plugin_functions()
+#2 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_plugin_fun...')
+#3 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_plugin_fun...')
+#4 /local/home/aurora/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_plugin_fun...')
+#5 /local/home/aurora/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/aurora/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object(TextReporter))
+#7 / in /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php on line 31
+[09-Jun-2007 04:30:44] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 4
+[09-Jun-2007 04:31:09] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 4
+[09-Jun-2007 04:32:24] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting T_FUNCTION in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php on line 4
+[09-Jun-2007 04:33:55] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'query when not expected: SELECT COUNT(*) AS total FROM vexor2admin WHERE `user_id` = '-1'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:40
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php(149): TestMySQLConn->query('SELECT COUNT(*)...')
+#1 /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php(41): VexorAdminPanelPlugin->isAdministratorHuh(Object(GuestUser))
+#2 /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.VexorAdminPanelPlugin.php(18): VexorAdminPanelPlugin->__construct(Object(Aurora), Array)
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestVexorAdminPanelPlugin->testAdminPanelPlugin()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('testAdminPanelP...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('testAdminPanelP.. in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 40
+[09-Jun-2007 04:35:50] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'query when not expected: SELECT COUNT(*) AS total FROM vexor2admin WHERE `user_id` = '-1'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:40
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php(149): TestMySQLConn->query('SELECT COUNT(*)...')
+#1 /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php(41): VexorAdminPanelPlugin->isAdministratorHuh(Object(GuestUser))
+#2 /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.Plugins.php(13): VexorAdminPanelPlugin->__construct(Object(Aurora), Array)
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestPlugins->test_plugin_functions()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_plugin_fun...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_plugin_fun...')
+#6 /local/home/aurora/p in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 40
+[09-Jun-2007 04:37:15] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'query when not expected: SELECT COUNT(*) AS total FROM vexor2admin WHERE `user_id` = '-1'' in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php:40
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php(149): TestMySQLConn->query('SELECT COUNT(*)...')
+#1 /local/home/aurora/public_html/library/Aurora/Model/Plugins/class.VexorAdminPanelPlugin.php(41): VexorAdminPanelPlugin->isAdministratorHuh(Object(GuestUser))
+#2 /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.Plugins.php(13): VexorAdminPanelPlugin->__construct(Object(Aurora), Array)
+#3 /local/home/aurora/public_html/simpletest/runner.php(59): TestPlugins->test_plugin_functions()
+#4 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_plugin_fun...')
+#5 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_plugin_fun...')
+#6 /local/home/aurora/p in /local/home/aurora/public_html/library/IO/class.TestMySQLConn.php on line 40
+[25-Jul-2007 21:17:31] PHP Fatal error:  Class 'TestPostgrConn' not found in /local/home/aurora/public_html/library/Aurora/Model/Plugins/test.class.Plugins.php on line 9
+[25-Jul-2007 21:22:04] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Table 'aurora_test.reservations' doesn't exist' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:97
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/Reservation/class.ReservationManager.php(162): MySQLConn->query('UPDATE `calenda...')
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(792): ReservationManager->notifyUserDeleted(Object(Member))
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(692): Aurora->notifyUserDeleted(Object(Member))
+#3 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(91): Aurora->deleteUser(Object(Member))
+#4 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#5 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_sign_up_ in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 97
+[05-Aug-2007 05:56:00] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'user_attendee_id' in 'where clause'' in /local/home/aurora/public_html/library/IO/class.MySQLConn.php:97
+Stack trace:
+#0 /local/home/aurora/public_html/library/Aurora/Model/class.ReminderManager.php(606): MySQLConn->query('UPDATE `reminde...')
+#1 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(818): ReminderManager->notifyUserDeleted(Object(Member))
+#2 /local/home/aurora/public_html/library/Aurora/Model/class.Aurora.php(718): Aurora->notifyUserDeleted(Object(Member))
+#3 /local/home/aurora/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(91): Aurora->deleteUser(Object(Member))
+#4 /local/home/aurora/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#5 /local/home/aurora/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#6 /local/home/aurora/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_sign_up_an...')
+#7 /l in /local/home/aurora/public_html/library/IO/class.MySQLConn.php on line 97
+[08-Aug-2007 05:57:05] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'magical_id' in 'field list'' in /local/home/jotlet/public_html/library/IO/class.MySQLConn.php:97
+Stack trace:
+#0 /local/home/jotlet/public_html/library/Aurora/Model/class.CalendarManager.php(265): MySQLConn->query('INSERT INTO `ca...')
+#1 /local/home/jotlet/public_html/library/Aurora/Model/test.class.CalendarManager.realDB.php(39): CalendarManager->addCalendarFor(Object(Member), 'My Events')
+#2 /local/home/jotlet/public_html/simpletest/runner.php(59): TestCalendarManagerRealDB->test_add_delete_calendar()
+#3 /local/home/jotlet/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_add_delete...')
+#4 /local/home/jotlet/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_add_delete...')
+#5 /local/home/jotlet/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_add_delete...')
+#6 /local/home/jotlet/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#7 /local/home/jotlet/ in /local/home/jotlet/public_html/library/IO/class.MySQLConn.php on line 97
+[08-Aug-2007 05:58:15] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Unknown column 'user_attendee_id' in 'where clause'' in /local/home/jotlet/public_html/library/IO/class.MySQLConn.php:97
+Stack trace:
+#0 /local/home/jotlet/public_html/library/Aurora/Model/class.ReminderManager.php(606): MySQLConn->query('UPDATE `reminde...')
+#1 /local/home/jotlet/public_html/library/Aurora/Model/class.Aurora.php(930): ReminderManager->notifyUserDeleted(Object(Member))
+#2 /local/home/jotlet/public_html/library/Aurora/Model/class.Aurora.php(830): Aurora->notifyUserDeleted(Object(Member))
+#3 /local/home/jotlet/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(91): Aurora->deleteUser(Object(Member))
+#4 /local/home/jotlet/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#5 /local/home/jotlet/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#6 /local/home/jotlet/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_sign_up_an...')
+#7 /l in /local/home/jotlet/public_html/library/IO/class.MySQLConn.php on line 97
+[08-Aug-2007 05:59:00] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'Table 'jotlet_test.reservations' doesn't exist' in /local/home/jotlet/public_html/library/IO/class.MySQLConn.php:97
+Stack trace:
+#0 /local/home/jotlet/public_html/library/Aurora/Model/Reservation/class.ReservationManager.php(162): MySQLConn->query('UPDATE `calenda...')
+#1 /local/home/jotlet/public_html/library/Aurora/Model/class.Aurora.php(930): ReservationManager->notifyUserDeleted(Object(Member))
+#2 /local/home/jotlet/public_html/library/Aurora/Model/class.Aurora.php(830): Aurora->notifyUserDeleted(Object(Member))
+#3 /local/home/jotlet/public_html/library/Aurora/Model/test.class.Aurora.realDB.php(91): Aurora->deleteUser(Object(Member))
+#4 /local/home/jotlet/public_html/simpletest/runner.php(59): TestAuroraRealDB->test_sign_up_and_confirm_realDB()
+#5 /local/home/jotlet/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_sign_up_an...')
+#6 /local/home/jotlet/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_sign_up_ in /local/home/jotlet/public_html/library/IO/class.MySQLConn.php on line 97
+[12-Oct-2007 19:17:17] E_WARNING: mysqli_connect(): (28000/1045): Access denied for user 'aurora'@'localhost' (using password: YES) in /local/home/jotbook/public_html/library/IO/class.MySQLConn.php on line 44
+[12-Oct-2007 19:17:17] E_WARNING: mysqli_query() expects parameter 1 to be mysqli, boolean given in /local/home/jotbook/public_html/library/IO/class.MySQLConn.php on line 45
+[12-Oct-2007 19:17:17] PHP Fatal error:  Uncaught exception 'DatabaseException' with message 'could not connect to MySQL' in /local/home/jotbook/public_html/library/IO/class.MySQLConn.php:48
+Stack trace:
+#0 /local/home/jotbook/public_html/library/Aurora/Model/test.class.Calendar.realDB.php(11): MySQLConn->query('TRUNCATE TABLE ...')
+#1 /local/home/jotbook/public_html/simpletest/runner.php(58): TestCalendarRealDB->setUp()
+#2 /local/home/jotbook/public_html/simpletest/runner.php(98): SimpleInvoker->invoke('test_modify_cal...')
+#3 /local/home/jotbook/public_html/simpletest/runner.php(127): SimpleInvokerDecorator->invoke('test_modify_cal...')
+#4 /local/home/jotbook/public_html/simpletest/runner.php(184): SimpleErrorTrappingInvoker->invoke('test_modify_cal...')
+#5 /local/home/jotbook/public_html/simpletest/test_case.php(96): SimpleRunner->run()
+#6 /local/home/jotbook/public_html/simpletest/test_case.php(537): SimpleTestCase->run(Object(TextReporter))
+#7 /local/home/jotbook/public_html/simpletest/test_case.php(539): GroupTest->run(Object(TextReporter))
+#8 in /local/home/jotbook/public_html/library/IO/class.MySQLConn.php on line 48
+[03-Jan-2008 12:09:42] PHP Fatal error:  Allowed memory size of 8388608 bytes exhausted (tried to allocate 77824 bytes) in /local/home/jotlet/public_html/library/ICal/class.iCal.php on line 366
+[03-Jan-2008 23:12:38] PHP Fatal error:  Allowed memory size of 8388608 bytes exhausted (tried to allocate 77824 bytes) in /local/home/jotlet/public_html/library/ICal/class.iCal.php on line 366
+[03-Jan-2008 23:16:42] PHP Fatal error:  Allowed memory size of 8388608 bytes exhausted (tried to allocate 77824 bytes) in /local/home/jotlet/public_html/library/ICal/class.iCal.php on line 366

@@ -1,0 +1,6 @@
+<?
+
+class NullJSONException extends Exception{
+}
+
+?>
