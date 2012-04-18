@@ -864,8 +864,6 @@ class TestListotron extends UnitTestCase{
 				
 		$out = $listotron->delete($data[0]->row_id, $data[0]->user_id);
 		
-		$txt_after = $listotron->getHumanReadable();
-		
 		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
 		
 		foreach($kids as $kid){
@@ -879,9 +877,225 @@ class TestListotron extends UnitTestCase{
 		$this->assertTrue($row2["par"] != $row8["par"] || $row2["prev"] != $row8["prev"]);
 		$this->assertEqual($row2["par"], $row8["par"]);
 		$this->assertEqual($row2["row_id"], $row8["prev"]);
+	}
+
+
+	/**
+	 * this test is when a node with children, having
+	 * a previous sibling without children, is deleted
+	 *
+	 * the sibling should inherit all the kids
+	 */
+	public function test_delete_node_with_prev_sibling(){
+		$listotron = new Listotron(array (
+		  'rows' => 
+		  array (
+		    0 => 
+		    array (
+		      'row_id' => '1',
+		      'text' => 'one',
+		      'par' => NULL,
+		      'prev' => NULL,
+		    ),
+		    1 => 
+		    array (
+		      'row_id' => '2',
+		      'text' => 'two',
+		      'par' => '1',
+		      'prev' => NULL,
+		      'del' => '2012-04-18 06:15:410.78905200',
+		    ),
+		    2 => 
+		    array (
+		      'row_id' => '3',
+		      'text' => 'three',
+		      'par' => NULL,
+		      'prev' => '1',
+		      'lmb' => '9813a8c6bd63eeb33b3573573636de6d',
+		      'lm' => '2012-04-18 05:34:190.15526800',
+		    ),
+		    3 => 
+		    array (
+		      'row_id' => 7,
+		      'text' => '',
+		      'par' => NULL,
+		      'prev' => '3',
+		      'lmb' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'lm' => '2012-04-18 06:15:410.80870000',
+		      'del' => '2012-04-18 06:15:410.78905200',
+		    ),
+		    4 => 
+		    array (
+		      'row_id' => 8,
+		      'text' => 'what',
+		      'par' => '3',
+		      'prev' => NULL,
+		      'lmb' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'lm' => '2012-04-18 06:15:410.78905200',
+		    ),
+		    5 => 
+		    array (
+		      'row_id' => 9,
+		      'text' => '',
+		      'par' => '3',
+		      'prev' => 8,
+		      'lmb' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'lm' => '2012-04-18 06:15:500.55838600',
+		      'del' => '2012-04-18 06:15:500.53828000',
+		    ),
+		    6 => 
+		    array (
+		      'row_id' => 10,
+		      'text' => 'the',
+		      'par' => '3',
+		      'prev' => 8,
+		      'lmb' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'lm' => '2012-04-18 06:15:500.53828000',
+		    ),
+		    7 => 
+		    array (
+		      'row_id' => 11,
+		      'text' => 'deal',
+		      'par' => NULL,
+		      'prev' => '3',
+		      'lmb' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'lm' => '2012-04-18 06:15:410.78905200',
+		    ),
+		    8 => 
+		    array (
+		      'row_id' => 13,
+		      'text' => '',
+		      'par' => 11,
+		      'prev' => NULL,
+		      'lmb' => '9813a8c6bd63eeb33b3573573636de6d',
+		      'lm' => '2012-04-18 05:34:300.29728000',
+		      'del' => '2012-04-18 05:34:300.29728000',
+		    ),
+		    9 => 
+		    array (
+		      'row_id' => 12,
+		      'text' => '',
+		      'par' => NULL,
+		      'prev' => 11,
+		      'lmb' => '9813a8c6bd63eeb33b3573573636de6d',
+		      'lm' => '2012-04-18 05:34:270.35453600',
+		      'del' => '2012-04-18 05:34:270.35453600',
+		    ),
+		    10 => 
+		    array (
+		      'row_id' => '4',
+		      'text' => 'amazing',
+		      'par' => NULL,
+		      'prev' => 11,
+		      'lmb' => '9813a8c6bd63eeb33b3573573636de6d',
+		      'lm' => '2012-04-18 05:34:290.69889600',
+		    ),
+		    11 => 
+		    array (
+		      'row_id' => '5',
+		      'text' => 'five',
+		      'par' => '4',
+		      'prev' => NULL,
+		      'lmb' => 'ae8b5fae8c4313e4ff6a7407caa8b34e',
+		      'lm' => '2009-06-18 02:09:310.20566600',
+		    ),
+		    12 => 
+		    array (
+		      'row_id' => '6',
+		      'text' => 'six',
+		      'par' => '4',
+		      'prev' => '5',
+		      'lmb' => 'ae8b5fae8c4313e4ff6a7407caa8b34e',
+		      'lm' => '2009-06-18 02:09:310.20566600',
+		    ),
+		  ),
+		  'users' => 
+		  array (
+		    0 => 
+		    array (
+		      'user_id' => 'ae8b5fae8c4313e4ff6a7407caa8b34e',
+		      'stamp' => '2009-06-18 02:09:330.87787700',
+		      'row_id' => '3',
+		    ),
+		    1 => 
+		    array (
+		      'user_id' => '0b957ab1ede427c9c2608e1e6d19b683',
+		      'stamp' => '2009-06-18 05:00:000.53217300',
+		      'row_id' => '3',
+		    ),
+		    2 => 
+		    array (
+		      'user_id' => '9813a8c6bd63eeb33b3573573636de6d',
+		      'stamp' => '2012-04-18 05:34:300.39666000',
+		      'row_id' => 11,
+		    ),
+		    3 => 
+		    array (
+		      'user_id' => '11def8df83d98b5642dc664cce4bfaa0',
+		      'stamp' => '2012-04-18 06:15:520.57614200',
+		      'row_id' => '3',
+		    ),
+		  ),
+		));
+		
+		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
 
 		
+		$json = '[{ "delete_row" : true,
+				"dt" : "2012-04-18 06:15:570.33323900",
+				"row_id" : "3",
+				"user_id" : "11def8df83d98b5642dc664cce4bfaa0" }]';
+		$data = json_decode($json);
+		
+		
+		$row_id_to_delete = 3;
+		
+		//
+		// make sure input json is parsed correctly
+		$this->assertEqual($data[0]->row_id, $row_id_to_delete);
+		$this->assertEqual($data[0]->user_id, "11def8df83d98b5642dc664cce4bfaa0");
+
+		// ignore deleted rows
+		$this->assertEqual(count($listotron->getAllRows()), 8);
+
+
+		//
+		// validate some of the logic
+		// that's inside the delete function
+		//
+		// we'll reproduce pieces here, as well as test
+		// the actual delete function
+
+		$row = $listotron->getRow($row_id_to_delete);
+		$kids = $listotron->getAllKids($row);
+		$lastkid = $listotron->getLastKid($row);
+		
+		$this->assertNotNull($row);
+		$this->assertEqual($row["row_id"], 3);
+		$this->assertTrue(is_array($kids));
+		$this->assertEqual(count($kids), 2);
+		$this->assertTrue($row["prev"] != null);
+		
+		//
+		// ok, now delete the actual row
+		// and validate the structure afterwards
+		$out = $listotron->delete($data[0]->row_id, $data[0]->user_id);
+		
+		$txt_after = $listotron->getHumanReadable();
+		
+		$this->assertTrue($listotron->isValidHuh(), "list should be valid");
+		
+		foreach($kids as $kid){
+			$kid = $listotron->getRow($kid["row_id"]);
+			$this->assertEqual($kid["par"], $row["prev"]);
+		}
+		
+		
+		$row8 = $listotron->getRow(8);
+		$this->assertNull($row8["prev"]);
 	}
+
+
 
 };
 
