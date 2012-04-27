@@ -34,6 +34,7 @@ try{
 	////////////////////////////////////////////
 
 	$filename = dirname(__FILE__) . "/../data/" . $list_id . ".data";
+	
 	$list = new Listotron($filename);
 	
 	$error_file = "error." . time() . ".log";
@@ -45,6 +46,7 @@ try{
 		echo "not ok!";
 		exit;
 	}
+	
 	
 	$control = new Controller($list);
 	$ret = $control->process($data);

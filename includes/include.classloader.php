@@ -56,13 +56,13 @@
 		return $ret;
 	}
 	
-	public function loadTestFiles(GroupTest $g){
+	public function loadTestFiles(TestSuite $g){
 		foreach($this->classpath as $c){
 			$this->loadTestFilesHelper($g, $c);
 		}
 	}
 	
-	protected function loadTestFilesHelper(GroupTest $g, $classpath){
+	protected function loadTestFilesHelper(TestSuite $g, $classpath){
 		$theList = array();
 		if ($handle = opendir($classpath)) {
 			while (false != ($file = readdir($handle))) {
@@ -72,7 +72,7 @@
 					}else{
 						if(strpos($file, "test.class.") === 0 &&
 						strpos($file, ".php") == strlen($file)-4){
-							$g->addTestFile($classpath . $file);
+							$g->addFile($classpath . $file);
 						}
 					}
 				}
