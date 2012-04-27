@@ -54,6 +54,17 @@ jQuery.extend({
 			return ret;
 		}
 		
+		this.hasKids = function(){
+			var rows = model.getAllCached();
+			var ret = null;
+			for(var idx in rows){
+				if(rows[idx].getParentId() == that.getRowId()){
+					return true;
+				}
+			}
+			return false;
+		}
+		
 		this.getLastKid = function(){
 			var ret = null;
 			var temp = that;
@@ -71,17 +82,26 @@ jQuery.extend({
 		 * otherwise returns on the previous sibling, if any
 		 * otherwise returns on the parent
 		 *
-		 * ****************************** *
-		 *       NEEDS OPTIMIZATION       *
-		 * ****************************** *
+		 * this returns the node visually
+		 * before this node in teh list.
+		 *
+		 * A
+		 *   C
+		 *   D
+		 * B
+		 *   E
+		 *
+		 * B.getPrevious() is D
+		 *
+		 * B.getPreviousId() is A
 		 */
 		this.getPrevious = function(){
 			if(that.getPreviousId()){
 				// does the previous have any children?
 				var ret = model.getRow(that.getPreviousId());
-				while((temp = ret.getNext()) &&
-					  (temp != null) &&
-					  (temp.getParentId() != that.getParentId())) ret = temp;
+				while(ret.hasKids()){
+					ret = ret.getLastKid();
+				}
 				return ret;
 			}
 			return that.getParent();

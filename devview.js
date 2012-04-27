@@ -322,9 +322,7 @@ jQuery.extend({
 					var prev = rowli.getRow().getPrevious();
 					that.selectPreviousRow(rowli);
 				}
-			}			
-			
-			if(rowli.getRow().getParentId()){
+			}else if(rowli.getRow().getParentId()){
 				var par = rows.get(rowli.getRow().getParentId());
 				if(!par){
 					alert("can't find parent of " + rowli.getRowId() + " id: " + rowli.getRow().getParentId());
@@ -333,7 +331,6 @@ jQuery.extend({
 			}else{
 				list.updateKid(rowli);
 			}
-			
 			if(model_row.isDeletedHuh()){
 				// it's deleted, remove it
 				rowli.getDOM().remove();
