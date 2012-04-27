@@ -58,8 +58,10 @@ jQuery.extend({
 			var rows = model.getAllCached();
 			var ret = null;
 			for(var idx in rows){
-				if(rows[idx].getParentId() == that.getRowId()){
-					return true;
+				if(!rows[idx].isDeletedHuh()){
+					if(rows[idx].getParentId() == that.getRowId()){
+						return true;
+					}
 				}
 			}
 			return false;
