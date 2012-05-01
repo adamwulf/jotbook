@@ -688,7 +688,6 @@ class TestListotron extends UnitTestCase{
 	 *      - kid3
 	 *      - kid4
 	 */
-	 */
 	public function test_error_1334729757(){
 		$listotron = new Listotron(array (
 		  'rows' => 

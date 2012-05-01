@@ -10,7 +10,7 @@ jQuery.extend({
 			if(b){
 				$dom.find("span:first").hide();
 				$dom.find("input:first").show().val(row.getText());
-				that.focus();
+				that.focus(true); // force the selection of this row
 			}else{
 				$dom.find("input:first").hide();
 				$dom.find("span:first").show();
@@ -23,8 +23,20 @@ jQuery.extend({
 			return editing;
 		}
 		
-		this.focus = function(){
-			if(needsFocus) $dom.find("input:first").focus().select();
+		/**
+		 * needsFocus is a flag that is set to
+		 * true only if the user is issuing a keycommand
+		 * on this row specifically
+		 *
+		 * if the input "force" is true, then we
+		 * should also set the focus.
+		 *
+		 * this may happen if i send a keycommand to a row that
+		 * requires that i select a different row (up / down / delete / etc)
+		 * but need to select a different row
+		 */
+		this.focus = function(force){
+			if(needsFocus || force) $dom.find("input:first").focus().select();
 		}
 		
 		this.saveChanges = function(){
@@ -322,9 +334,7 @@ jQuery.extend({
 					var prev = rowli.getRow().getPrevious();
 					that.selectPreviousRow(rowli);
 				}
-			}			
-			
-			if(rowli.getRow().getParentId()){
+			}else if(rowli.getRow().getParentId()){
 				var par = rows.get(rowli.getRow().getParentId());
 				if(!par){
 					alert("can't find parent of " + rowli.getRowId() + " id: " + rowli.getRow().getParentId());
@@ -333,7 +343,6 @@ jQuery.extend({
 			}else{
 				list.updateKid(rowli);
 			}
-			
 			if(model_row.isDeletedHuh()){
 				// it's deleted, remove it
 				rowli.getDOM().remove();

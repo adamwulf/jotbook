@@ -5,7 +5,7 @@ include "../include.php";
 require_once('unit_tester.php');
 require_once('reporter.php');
 
-$test = new GroupTest('All file tests');
+$test = new TestSuite('All file tests');
 
 
 $c = new ClassLoader();
