@@ -566,9 +566,22 @@ jQuery.extend({
 			}
 			newRow.setParentId(row.getParentId());
 			newRow.setPreviousId(row.getRowId());
+			while(row.hasKids()){
+				var kid = row.getLastKid();
+				kid.setParentId(newRow.getRowId());
+			}
 
 			that.notifyInsertAfter(row);
 			that.notifyRowLoaded(newRow);
+			if(newRow.hasKids()){
+				var lastKid = newRow.getLastKid();
+				while(lastKid.getPreviousId() != null){
+					that.notifyRowLoaded(lastKid);
+					lastKid = lastKid.getPrevious();
+				}
+				that.notifyRowLoaded(lastKid);
+			}
+			
 			if(nextRow.getParentId() == row.getParentId()){
 				// reload if needed
 				that.notifyRowLoaded(nextRow);

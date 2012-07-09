@@ -6,7 +6,7 @@ try{
 
 
 
-	if($_REQUEST["login"]){
+	if(isset($_REQUEST["login"]) && $_REQUEST["login"]){
 		$mysql = mysql_connect(DB_HOST, DB_USER , DB_PASSWORD);
 		mysql_select_db(DB_NAME, $mysql);
 		
