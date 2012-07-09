@@ -2,10 +2,24 @@
 
 include "include.php";
 
-//$mysql = mysql_connect(DB_HOST, DB_USER , DB_PASSWORD);
-//mysql_select_db(DB_NAME, $mysql);
-
 try{
+
+
+
+	if($_REQUEST["login"]){
+		$mysql = mysql_connect(DB_HOST, DB_USER , DB_PASSWORD);
+		mysql_select_db(DB_NAME, $mysql);
+		
+		$result = mysql_query("SELECT * FROM jotbook.users");
+		$row = mysql_fetch_array($result);
+		print_r(mysql_error());
+		echo mysql_num_rows($result);
+		
+		mysql_close($mysql);
+		
+		exit;
+	}
+
 	
 	$list_id = readFormValue("list_id", $_REQUEST);
 	
