@@ -190,10 +190,29 @@ jQuery.extend({
 
 	},
 
-	Model: function(control){
+	Model: function(randomSeed){
 		// our local cache of $.Note objects
 		var cache = new $.HashTable();
 		var user_id = null;
+		
+		//
+		// since we can't trust the client's random number
+		// generator, we'll combine it with a random number
+		// from the server.
+		//
+		// Math.random() and randomSeed are both 0<x<1
+		// so we'll divide by their sum of 2 to get a new
+		// random number between 0 and 1
+		function randomNumber(){
+			var ret = Math.random()+randomSeed;
+			return ret / 2;
+		}
+		function generateUUID(){
+			return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+			    var r = randomNumber()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+			    return v.toString(16);
+			});
+		}
 		
 		//
 		// track last modified by user

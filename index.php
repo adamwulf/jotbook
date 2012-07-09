@@ -1,3 +1,13 @@
+<?
+// seed with microseconds
+function make_seed()
+{
+  list($usec, $sec) = explode(' ', microtime());
+  return (float) $sec + ((float) $usec * 100000);
+}
+srand(make_seed());
+$randval = rand(0, 10000) / 10000;
+?>
 <html>
 	<head>
 		<script>
@@ -13,7 +23,8 @@
 		<script src="/controller.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(function(){
-				var model = new $.Model();
+				var randomSeed = <?= $randval ?>;
+				var model = new $.Model(randomSeed);
 				var view = new $.View($("#interface"));
 				var controller = new $.Controller(model, view);
 			});

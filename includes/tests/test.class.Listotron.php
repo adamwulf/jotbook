@@ -1288,7 +1288,18 @@ class TestListotron extends UnitTestCase{
 		// look at the somehow.invalid.data file
 		//
 		// when it loads JS gets stuck on a node
-		$this->assertTrue(false);
+		$filename = dirname(__FILE__) . "/../../logs_for_tests/somehow.invalid.data";
+		
+		$list = new Listotron($filename);
+		
+		$error_file = "error." . time() . ".log";
+		
+		$ok_before = $list->isValidHuh();
+		
+		$this->assertTrue($ok_before);
+
+		$rows = $list->getAllRows();
+		$this->assertEqual(count($rows), 5, "five rows");
 	}
 
 };
