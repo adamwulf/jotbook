@@ -56,7 +56,7 @@ class Controller{
 				$out = array();
 				$out["error"] = false;
 				$out["dt"] = $listotron->getNOW();
-				$out["rows"] = $listotron->insertRowAfter($data[$i]->row_id, $data[$i]->user_id);
+				$out["rows"] = $listotron->insertRowAfter($data[$i]->row_id, $data[$i]->user_id, $data[$i]->new_row_id);
 			}else if(isset($data[$i]->insert_before)){
 				// insert a row before the input row
 	
@@ -65,7 +65,7 @@ class Controller{
 				$out = array();
 				$out["error"] = false;
 				$out["dt"] = $listotron->getNOW();
-				$out["rows"] = $listotron->insertRowBefore($data[$i]->row_id, $data[$i]->user_id);
+				$out["rows"] = $listotron->insertRowBefore($data[$i]->row_id, $data[$i]->user_id, $data[$i]->new_row_id);
 			}else if(isset($data[$i]->edit)){
 				// edit text in a row, and return all changed rows
 				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id);

@@ -7,7 +7,6 @@ include "include.php";
 
 try{
 	
-	
 	$list_id = readFormValue("list_id", $_REQUEST);
 	
 	//

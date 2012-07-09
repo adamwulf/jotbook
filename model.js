@@ -3,6 +3,11 @@ jQuery.extend({
 	
 	Row: function(json, model){
 	
+		//
+		// example json
+		// {"row_id":"1","text":"dsaone","par":null,"prev":null,"lmb":"1f3cd717e8224a6dfabae71266d2056d","lm":"2012-04-27 05:50:130.17865800"}
+		
+	
 		// properties
 		var that = this;
 		var data = json;
@@ -214,6 +219,22 @@ jQuery.extend({
 			});
 		}
 		
+		function createNewRow(){
+			var json = {
+				"row_id" : generateUUID(),
+				"text" : "",
+				"par" : null,
+				"prev" : null,
+				"lmb" : that.getUserId(),
+				"lm" : null
+			};
+			var data = { rows : [] };
+			data.rows.push(json);
+			var out = loadResponse(data, true);
+			return out[0];
+		}
+		
+		
 		//
 		// track last modified by user
 		// and their datetime
@@ -268,7 +289,7 @@ jQuery.extend({
 
 
 		// load a json response from an ajax call
-		function loadResponse(data){
+		function loadResponse(data, suppressLoadedNotification){
 			lastLoad = data.dt;
 			loadLocations(data);
 			var out = new Array();
@@ -291,7 +312,9 @@ jQuery.extend({
 					cache.put(row.row_id, cachedRow);
 				}
 				out.push(cachedRow);
-				that.notifyRowLoaded(cachedRow);
+				if(!suppressLoadedNotification){
+					that.notifyRowLoaded(cachedRow);
+				}
 			});
 			if(!that.validate()){
 				control.stopBajax();
@@ -347,7 +370,6 @@ jQuery.extend({
 		 * load the entire list from the server
 		 */
 		this.getAll = function(dt){
-//			console.log("getting all");
 			that.notifyLoadBegin();
 			var data = { load : true };
 			if(dt) data = function(){
@@ -435,12 +457,20 @@ jQuery.extend({
 		 * @param a Row object
 		 */
 		this.insertRowBefore = function(row){
+			var newRow = createNewRow();
+			newRow.setParentId(row.getParentId());
+			newRow.setPreviousId(row.getPreviousId());
+			row.setPreviousId(newRow.getRowId());
+			
 			that.notifyInsertBefore(row);
+			that.notifyRowLoaded(newRow);
+			that.notifyRowLoaded(row);
 			$.bAjax(control.getBAjaxOptions(), {
 				data : { insert_before : true, 
 						 dt : lastLoad,
 						 row_id : row.getRowId(),
-						 user_id : that.getUserId() },
+						 user_id : that.getUserId(),
+						 new_row_id : newRow.getRowId() },
 				type: 'POST',
 				error: function(){
 					that.notifyInsertBeforeFailed(row);
@@ -527,12 +557,28 @@ jQuery.extend({
 		 * @param a Row object
 		 */
 		this.insertRowAfter = function(row){
+			var newRow = createNewRow();
+			var nextRow = row.getNext();
+			if(nextRow.getParentId() == row.getParentId()){
+				// they're actually siblings, so update
+				// nextRow's prevId to the new row
+				nextRow.setPreviousId(newRow.getRowId());
+			}
+			newRow.setParentId(row.getParentId());
+			newRow.setPreviousId(row.getRowId());
+
 			that.notifyInsertAfter(row);
+			that.notifyRowLoaded(newRow);
+			if(nextRow.getParentId() == row.getParentId()){
+				// reload if needed
+				that.notifyRowLoaded(nextRow);
+			}
 			$.bAjax(control.getBAjaxOptions(), {
 				data : { insert_after : true, 
 						 dt : lastLoad,
 						 row_id : row.getRowId(),
-						 user_id : that.getUserId() },
+						 user_id : that.getUserId(),
+						 new_row_id : newRow.getRowId() },
 				type: 'POST',
 				error: function(){
 					that.notifyInsertAfterFailed(row);

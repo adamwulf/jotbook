@@ -376,14 +376,14 @@ class Listotron{
 		return $rows;
 	}
 	
-	public function insertRowBefore($row_id, $user_id){
+	public function insertRowBefore($row_id, $user_id, $new_row_id = false){
 		$rows = array();
 		
 		for($i=0;$i<count($this->data["rows"]);$i++){
 			if($this->data["rows"][$i]["row_id"] == $row_id && !$this->isDeletedHuh($this->data["rows"][$i])){
 				// prep the new row
 				$newrow = array();
-				$newrow["row_id"] = $this->getNextId();
+				$newrow["row_id"] = $new_row_id ? $new_row_id : $this->getNextId();
 				$newrow["text"] = "";
 				$newrow["par"] = $this->data["rows"][$i]["par"];
 				$newrow["prev"] = $this->data["rows"][$i]["prev"];
@@ -405,10 +405,10 @@ class Listotron{
 	}
 		
 
-	public function insertRowAfter($row_id, $user_id){
+	public function insertRowAfter($row_id, $user_id, $new_row_id = false){
 		$rows = array();
 		$row = $this->getRow($row_id);
-		$new_id = $this->getNextId();
+		$new_id = $new_row_id ? $new_row_id : $this->getNextId();
 		
 		// prep the new row
 		$newrow = array();
