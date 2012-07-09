@@ -97,6 +97,9 @@ jQuery.extend({
 			savingFinished : function() { },
 			loadUserPosition : function(user_id, row_id){
 				view.loadUserPosition(user_id, row_id);
+			},
+			insertBefore : function(newRow, row){
+				view.insertRowBefore(newRow, row);
 			}
 		});
 		model.addListener(mlist);

@@ -462,9 +462,9 @@ jQuery.extend({
 			newRow.setPreviousId(row.getPreviousId());
 			row.setPreviousId(newRow.getRowId());
 			
-			that.notifyInsertBefore(row);
 			that.notifyRowLoaded(newRow);
 			that.notifyRowLoaded(row);
+			that.notifyInsertBefore(newRow, row);
 			$.bAjax(control.getBAjaxOptions(), {
 				data : { insert_before : true, 
 						 dt : lastLoad,
@@ -716,9 +716,9 @@ jQuery.extend({
 			});
 		}
 		
-		this.notifyInsertBefore = function(row){
+		this.notifyInsertBefore = function(newRow, row){
 			$.each(listeners, function(i){
-				listeners[i].insertBefore(row);
+				listeners[i].insertBefore(newRow, row);
 			});
 		}
 

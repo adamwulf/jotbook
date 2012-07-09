@@ -34,11 +34,15 @@ jQuery.extend({
 		    }
 		}
 		
-		this.setEditMode = function(b){
+		this.setEditMode = function(b, start){
 			if(b){
 				$dom.find("span:first").hide();
 				$dom.find("input:first").show().val(row.getText());
-				that.focus(true); // force the selection of this row
+				if(start){
+					that.focusStart(true); // force the selection of this row
+				}else{
+					that.focus(true); // force the selection of this row
+				}
 			}else{
 				$dom.find("input:first").hide();
 				$dom.find("span:first").show();
@@ -64,7 +68,18 @@ jQuery.extend({
 		 * but need to select a different row
 		 */
 		this.focus = function(force){
-			if(needsFocus || force) $dom.find("input:first").focus().select();
+			if(needsFocus || force){
+				$dom.find("input:first").focus().select();
+				needsFocus = false;
+			}
+		}
+		
+		this.focusStart = function(force){
+			if(needsFocus || force){
+				$dom.find("input:first").focus();
+				$dom.find("input:first").get(0).setSelectionRange(0,0);
+				needsFocus = false;
+			}
 		}
 		
 		this.saveChanges = function(){
@@ -284,6 +299,13 @@ jQuery.extend({
 			that.notifyLocationChanged(rowli.getRow());
 		}
 		
+		this.setCursorAtBeginningOfRow = function(rowli){
+			that.unselectAll();
+			rowli.setEditMode(true, true);
+			selected = rowli;
+			that.notifyLocationChanged(rowli.getRow());
+		}
+		
 		this.selectPreviousRow = function(rowli){
 			var prev = rowli.getRow().getPrevious();
 			if(prev){
@@ -396,6 +418,16 @@ jQuery.extend({
 				if(rowli.isEditing()) rowli.focus();
 				if(selectIt) that.selectRow(rowli);
 			}
+		}
+		
+		//
+		// we just inserted newRow
+		// before row, so put the cursor at the 
+		// beginning of row
+		this.insertRowBefore = function(newRow, row){
+			var rowLi = that.getRowLI(row.getRowId());
+//			debugger;
+			that.setCursorAtBeginningOfRow(rowLi);
 		}
 		
 		/**
