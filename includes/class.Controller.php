@@ -67,7 +67,7 @@ class Controller{
 				$out["dt"] = $listotron->getNOW();
 				$out["rows"] = $listotron->insertRowBefore($data[$i]->row_id, $data[$i]->user_id);
 			}else if(isset($data[$i]->edit)){
-				// indent a row, and return all changed rows
+				// edit text in a row, and return all changed rows
 				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id);
 	
 				$out = array();

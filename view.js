@@ -6,6 +6,34 @@ jQuery.extend({
 		var editing = false;
 		var needsFocus = true;
 		
+		
+		function getSelectionStart(o) {
+		    if (o.createTextRange) {
+		        var r = document.selection.createRange().duplicate();
+		        r.moveEnd("character", o.value.length);
+		        if (r.text == "") {
+		            return o.value.length;
+		        }
+		        else {
+		            return o.value.lastIndexOf(r.text);
+		        }
+		    }
+		    else {
+		        return o.selectionStart;
+		    }
+		}
+		 
+		function getSelectionEnd(o) {
+		    if (o.createTextRange) {
+		        var r = document.selection.createRange().duplicate();
+		        r.moveStart("character", -o.value.length);
+		        return r.text.length;
+		    }
+		    else {
+		        return o.selectionEnd;
+		    }
+		}
+		
 		this.setEditMode = function(b){
 			if(b){
 				$dom.find("span:first").hide();
@@ -67,7 +95,15 @@ jQuery.extend({
 					row.setText($dom.find("input:first").val());
 					row.confirm();
 					that.refresh();
-					view.addRowAfter(that);
+					var start = getSelectionStart($dom.find("input:first").get(0));
+					var end = getSelectionEnd($dom.find("input:first").get(0));
+					if(row.getText().length == 0){
+						view.addRowAfter(that);
+					}else if(start == end && start == 0){
+						view.addRowBefore(that);
+					}else{
+						view.addRowAfter(that);
+					}
 				}else if(e.keyCode == 13 && e.shiftKey){ // shift enter
 					row.setText($dom.find("input:first").val());
 					row.confirm();
