@@ -98,10 +98,18 @@ jQuery.extend({
 					var start = getSelectionStart($dom.find("input:first").get(0));
 					var end = getSelectionEnd($dom.find("input:first").get(0));
 					if(row.getText().length == 0){
+						// row is empty, just add a new line
 						view.addRowAfter(that);
 					}else if(start == end && start == 0){
+						// row is not empty, but cursor is at beginning
+						// add a new row and put the cursor at the beginning
+						// of the newly moved row
+						console.log("adding row before " + that.getRowId());
 						view.addRowBefore(that);
+						console.log("done with add row call" + that.getRowId());
 					}else{
+						// cursor is anywhere but the beginning of a row
+						// so add a row after
 						view.addRowAfter(that);
 					}
 				}else if(e.keyCode == 13 && e.shiftKey){ // shift enter
@@ -352,6 +360,7 @@ jQuery.extend({
 		 * the DOM
 		 */
 		this.loadRow = function(model_row){
+			console.log("loaded row" + model_row.getRowId());
 			var selectIt = false;
 			var rowli = rows.get(model_row.getRowId());
 			if(rowli){
