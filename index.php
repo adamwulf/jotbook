@@ -1,4 +1,5 @@
 <?
+
 // seed with microseconds
 function make_seed()
 {
@@ -15,12 +16,12 @@ $randval = rand(0, 10000) / 10000;
 		if(typeof(console.log) == "undefined") console.log = function(){}
 		</script>
 <!--		<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
-		<script src="/includes/jquery.js" type="text/javascript"></script>
-		<script src="/includes/bajax.js" type="text/javascript"></script>
-		<script src="/model.js" type="text/javascript"></script>
-		<script src="/util.js" type="text/javascript"></script>
-		<script src="/view.js" type="text/javascript"></script>
-		<script src="/controller.js" type="text/javascript"></script>
+		<script src="/javascript/jquery.js" type="text/javascript"></script>
+		<script src="/javascript/bajax.js" type="text/javascript"></script>
+		<script src="/javascript/model.js" type="text/javascript"></script>
+		<script src="/javascript/util.js" type="text/javascript"></script>
+		<script src="/javascript/view.js" type="text/javascript"></script>
+		<script src="/javascript/controller.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(function(){
 				var randomSeed = <?= $randval ?>;
