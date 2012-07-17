@@ -50,6 +50,7 @@ $randval = rand(0, 10000) / 10000;
 		</style>
 	</head>
 <body>
+<div id="queue"></div>
 <div id="interface">
 </div>
 <input type='button' value='stop' id='stopbutton'>

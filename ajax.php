@@ -4,8 +4,6 @@ include "include.php";
 
 try{
 
-
-
 	if(isset($_REQUEST["login"]) && $_REQUEST["login"]){
 		$mysql = mysql_connect(DB_HOST, DB_USER , DB_PASSWORD);
 		mysql_select_db(DB_NAME, $mysql);
@@ -64,6 +62,12 @@ try{
 	$control = new Controller($list);
 	$ret = $control->process($data);
 
+	if(defined("DEBUG")){
+		sleep(3);
+	}
+
+
+
 	$ok_after = $list->isValidHuh();
 	$txt_after = $list->getHumanReadable();
 	
@@ -93,7 +97,7 @@ try{
 
 	$ret = json_encode($ret);
 	
-	echo $ret;
+	echo indentJSON($ret);
 
 
 	////////////////////////////////////////////
