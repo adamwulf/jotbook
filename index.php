@@ -41,7 +41,7 @@ $randval = rand(0, 10000) / 10000;
 			width: 90%;
 		}
 		li{
-			background: url(bullet.png) no-repeat 1px 6px;
+			background: url(images/bullet.png) no-repeat 1px 6px;
 			padding-left: 10px;
 		}
 		ul{
