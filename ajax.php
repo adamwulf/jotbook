@@ -54,7 +54,8 @@ try{
 	$txt_before = $list->getHumanReadable();
 	
 	if(!$ok_before){
-		echo "not ok!";
+		echo "not ok!\n";
+		echo $list->getHumanReadable();
 		exit;
 	}
 	
