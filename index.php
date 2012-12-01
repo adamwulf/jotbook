@@ -22,7 +22,7 @@
 		li span{
 			display: block;
 			padding:3px;
-			height: 14px;
+			min-height: 14px;
 			font-size: 10pt;
 		}
 		li input{

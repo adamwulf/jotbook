@@ -6,7 +6,7 @@ try{
 
 
 
-	if($_REQUEST["login"]){
+	if(isset($_REQUEST["login"]) && $_REQUEST["login"]){
 		$mysql = mysql_connect(DB_HOST, DB_USER , DB_PASSWORD);
 		mysql_select_db(DB_NAME, $mysql);
 		
@@ -57,7 +57,8 @@ try{
 	$txt_before = $list->getHumanReadable();
 	
 	if(!$ok_before){
-		echo "not ok!";
+		echo "not ok!\n";
+		echo $list->getHumanReadable();
 		exit;
 	}
 	
