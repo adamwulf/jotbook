@@ -1,0 +1,8 @@
+# Easy PHP App
+
+The goal of this repository is to provide an extremely simple template for a PHP based application that uses twitter
+oauth for user login. The database is handled by the JSON-to-MySQL repository (https://github.com/adamwulf/json-to-mysql)
+for barebones database access with zero manual schema setup.
+
+This repository is great for simple hobby projects, and to quickly get an idea off the table and into the wild. This
+is not meant to scale to any reasonable degree at all. It's great for prototyping, terrible for production :)

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rss version="2.0"><channel>
+<title>Houston, TX Weather from Weather Underground</title>
+	<link>http://www.wunderground.com/</link>
+	<description>Weather Underground RSS Feed for Houston, TX US</description>
+	<language>EN</language>
+        <generator>WU-RSS</generator>
+        <webMaster>aaron@wunderground.com</webMaster>
+	<category>weather</category>
+        <image>
+                <url>http://icons.wunderground.com/graphics/smash/wunderTransparent.gif</url>
+                <link>http://www.wunderground.com/</link>
+                <title>Weather Underground</title>     
+        </image>
+        <pubDate>Wed, 9 Aug 2006 19:34:00 CDT</pubDate>
+        <lastBuildDate>Wed, 9 Aug 2006 19:34:00 CDT</lastBuildDate>
+	<ttl>5</ttl>
+<item>
+<guid isPermaLink="false">1155170050</guid>
+<title>Current Conditions - 90.7F / 32.6C | Partly Cloudy - 7:34 PM CDT Aug. 9</title>
+<link>http://www.wunderground.com/US/TX/Houston.html</link>
+	<description><![CDATA[Temperature: 90.7&#176;F / 32.6&#176;C | Humidity: 58% | Pressure: 29.95in / 1014.1hPa | Conditions: Partly Cloudy | Wind Direction: West | Wind Speed: 1.0mph / 1.6km/h]]>
+	</description>
+        <pubDate>Wed, 9 Aug 2006 19:34:00 CDT</pubDate>
+</item>
+<item>
+<title>Tonight as of Aug. 9 2:53 PM CDT</title>
+<link>http://www.wunderground.com/US/TX/Houston.html</link>    
+      <description>
+	Tonight - Partly cloudy with isolated early evening showers and thunderstorms...then becoming mostly clear. Lows in the mid 70s. South winds around 5 mph. Chance of rain less than 20 percent.	
+      </description>
+      <pubDate>Wed, 09 Aug 2006 14:53:00 CDT</pubDate>
+      <guid isPermaLink="false">1155153180-1</guid>
+</item>
+<item>
+<title>Thursday as of Aug. 9 2:53 PM CDT</title>
+<link>http://www.wunderground.com/US/TX/Houston.html</link>    
+      <description>
+	Thursday - Partly cloudy. A 20 percent chance of showers and thunderstorms in the morning...then a 30 percent chance in the afternoon. Highs in the mid 90s. South winds 5 to 10 mph. 	
+      </description>
+      <pubDate>Wed, 09 Aug 2006 14:53:00 CDT</pubDate>
+      <guid isPermaLink="false">1155153180-2</guid>
+</item>
+<item>
+<title>Thursday Night as of Aug. 9 2:53 PM CDT</title>
+<link>http://www.wunderground.com/US/TX/Houston.html</link>    
+      <description>
+	Thursday Night - Partly cloudy in the evening then clearing. Lows in the mid 70s. South winds 5 to 10 mph. 	
+      </description>
+      <pubDate>Wed, 09 Aug 2006 14:53:00 CDT</pubDate>
+      <guid isPermaLink="false">1155153180-3</guid>
+</item>
+
+
+
+
+
+
+
+
+
+</channel>
+</rss>
