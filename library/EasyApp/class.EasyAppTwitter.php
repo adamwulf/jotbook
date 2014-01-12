@@ -14,7 +14,9 @@ class EasyAppTwitter{
 		$this->token = $twitter_info['oauth_token'];
 		$this->secret = $twitter_info['oauth_token_secret'];
 		$this->screenname = $twitter_info['screen_name'];
-		$this->avatar = $twitter_info['avatar'];
+		if(isset($twitter_info['avatar'])){
+			$this->avatar = $twitter_info['avatar'];
+		}
 		$this->cb = new \Codebird\Codebird;
 	    $this->cb->setToken($this->token, $this->secret);
 	}
