@@ -9,15 +9,48 @@ $app = new EasyApp($db);
 // start session for tracking logged in user
 session_start();
 
+$list_id = readFormValue("list_id", $_REQUEST);
 
 
 
-
+$my_lists = array();
 if($app->isLoggedIn()){
+	$list_table = $db->table("accessed_lists");
+	$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id));
+	if($list_id){
+		$db->save(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "stamp" => time()), "accessed_lists");
+	}
+}
+
+if($app->isLoggedIn() && isset($_GET["forget"])){
 	$list_id = readFormValue("list_id", $_REQUEST);
 	$list_table = $db->table("accessed_lists");
 	$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id));
-	$db->save(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "stamp" => time()), "accessed_lists");
+}
+
+if($app->isLoggedIn()){
+	$list_table = $db->table("accessed_lists");
+	$result = $list_table->find(array("twitter_id" => $app->twitter()->userId()));
+	$rows = array();
+	while($row = $result->fetch_array()){
+		$stamp[]  = $row['list_id'];
+    	$rows[] = $row;
+	}
+	
+	array_multisort($stamp, SORT_ASC, $rows);
+	
+	$my_lists = $rows;
+}
+
+
+
+if($app->isLoggedIn() && isset($_GET["forget"])){
+	if(count($my_lists)){
+	    header('Location: ' . '/list/' . $my_lists[0]["list_id"]);
+	}else{
+	    header('Location: ' . '/');
+	}
+	die();
 }
 
 	
@@ -98,20 +131,22 @@ if($app->isLoggedIn()){
 	echo "<a href='" . page_self_url() . "?logout" . "'>Log Out</a><br>";
 	echo "<br><br>";
 	
-	$list_table = $db->table("accessed_lists");
+	
 
-	$result = $list_table->find(array("twitter_id" => $app->twitter()->userId()));
-	$rows = array();
-	while($row = $result->fetch_array()){
-		$stamp[]  = $row['stamp'];
-    	$rows[] = $row;
+	echo "<b>My Lists</b><br>";
+	for($i=0;$i<count($my_lists);$i++){
+		if($my_lists[$i]["list_id"] != ""){
+			if($list_id == $my_lists[$i]["list_id"]){
+				echo $list_id . "<br>";
+			}else{
+				echo "<a href='/list/" . urlencode($my_lists[$i]["list_id"]) . "'>" . $my_lists[$i]["list_id"] . "</a><br>";
+			}
+		}
 	}
 	
-	array_multisort($stamp, SORT_DESC, $rows);
-
-	for($i=1;$i<count($rows);$i++){
-		echo "<a href='/list/" . urlencode($rows[$i]["list_id"]) . "'>" . $rows[$i]["list_id"] . "</a><br>";
-	}	
+	echo "<br><br>";
+	echo "<a href='?forget'>forget this list</a><br>";
+	echo "(list won't be deleted)<br>";
 
 }else{
 	echo "<a href='" . page_self_url() . "?twitter_login" . "'>";
