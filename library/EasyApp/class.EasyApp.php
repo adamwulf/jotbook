@@ -14,10 +14,13 @@ class EasyApp{
 	
 	// session info
 	private $session_info;
+	
+	// the twitter app object if logged in
+	private $twitter;
 
-	function __construct($db, $cb){
+	function __construct($db){
 		$this->db = $db;
-		$this->cb = $cb;
+		$this->cb = new \Codebird\Codebird;
 		$this->initSession();
 	}
 	
@@ -44,18 +47,26 @@ class EasyApp{
 		return $this->session_info;
 	}
 	
-	
 	public function isLoggedIn(){
-		return is_array($this->sessionInfo());
+		if(!$this->twitter && is_array($this->sessionInfo())){
+			$session_info = $this->sessionInfo();
+			$twitter_info = $this->db->table("twitter_login")->find(array("id" => $session_info["twitter_id"]))->fetch_array();
+			$this->twitter = new EasyAppTwitter($twitter_info['oauth_token'], $twitter_info['oauth_token_secret']);
+		}
+		return is_object($this->twitter);
 	}
-	
-	
 	
 	public function logout(){
 		$sessions = $this->db->table("sessions");
 		$sessions->delete(array("session_id" => $_SESSION["uuid"]));
 		$this->session_info = false;
+		$this->twitter = false;
 		session_unset();
+	}
+	
+	public function twitter(){
+		$this->isLoggedIn(); // check login and setup twitter if need-be
+		return $this->twitter;
 	}
 
 	public function twitterLogin($callback_params){
@@ -99,18 +110,7 @@ class EasyApp{
 	}
 	
 	
-	public function fetchSomeTwitterInfo(){
-		$session_info = $this->sessionInfo();
-		$twitter_info = $this->db->table("twitter_login")->find(array("id" => $session_info["twitter_id"]))->fetch_array();
-		
-		print_r($twitter_info);
-	
-		// assign access token on each page load
-		$this->cb->setToken($twitter_info['oauth_token'], $twitter_info['oauth_token_secret']);
-		
-		$reply = $this->cb->account_verifyCredentials();
-		return $reply;
-	}
+
 }
 
 ?>

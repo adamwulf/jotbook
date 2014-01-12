@@ -15,9 +15,8 @@ session_start();
 $mysql = new MySQLConn(DATABASE_HOST, DATABASE_NAME, DATABASE_USER, DATABASE_PASS);
 $db = new JSONtoMYSQL($mysql);
 \Codebird\Codebird::setConsumerKey(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
-$cb = \Codebird\Codebird::getInstance();
 
-$app = new EasyApp($db, $cb);
+$app = new EasyApp($db);
 
 
 
@@ -53,7 +52,7 @@ if($app->isLoggedIn()){
 	
 	echo "<br><br>";
 	
-	print_r($app->fetchSomeTwitterInfo());
+	print_r($app->twitter()->fetchSomeTwitterInfo());
 }else{
 	echo "<a href='" . page_self_url() . "?twitter_login" . "'>";
 	echo "<img src='" . page_self_url() . "images/sign-in-with-twitter-gray.png' border=0/>";
