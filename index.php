@@ -11,7 +11,15 @@ session_start();
 
 
 
+
+
+if($app->isLoggedIn()){
 	$list_id = readFormValue("list_id", $_REQUEST);
+	$list_table = $db->table("accessed_lists");
+	$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id));
+	$db->save(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "stamp" => time()), "accessed_lists");
+}
+
 	
 if(isset($_GET["logout"])){
 	$app->logout();
@@ -89,7 +97,21 @@ if($app->isLoggedIn()){
 	echo "<img src='" . $app->twitter()->avatar() . "'/><br>";
 	echo "<a href='" . page_self_url() . "?logout" . "'>Log Out</a><br>";
 	echo "<br><br>";
-	echo "looking at: " . $list_id;
+	
+	$list_table = $db->table("accessed_lists");
+
+	$result = $list_table->find(array("twitter_id" => $app->twitter()->userId()));
+	$rows = array();
+	while($row = $result->fetch_array()){
+		$stamp[]  = $row['stamp'];
+    	$rows[] = $row;
+	}
+	
+	array_multisort($stamp, SORT_DESC, $rows);
+
+	for($i=1;$i<count($rows);$i++){
+		echo "<a href='/list/" . urlencode($rows[$i]["list_id"]) . "'>" . $rows[$i]["list_id"] . "</a><br>";
+	}	
 
 }else{
 	echo "<a href='" . page_self_url() . "?twitter_login" . "'>";
