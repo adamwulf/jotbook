@@ -76,5 +76,9 @@ function releaseLock(){
 		return $ret;
 	}
 	
+function getmicrotime(){ 
+    return microtime(true); 
+//    return ((float)$usec + (float)$sec); 
+}
 
 ?>

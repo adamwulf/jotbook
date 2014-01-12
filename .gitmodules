@@ -1,0 +1,6 @@
+[submodule "codebird-php"]
+	path = codebird-php
+	url = git@github.com:jublonet/codebird-php.git
+[submodule "json-to-mysql"]
+	path = json-to-mysql
+	url = git@github.com:adamwulf/json-to-mysql.git
