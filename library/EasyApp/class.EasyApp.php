@@ -95,7 +95,6 @@ class EasyApp{
 		$reply->id = $reply->user_id;
 		$ret = $this->db->save($reply, "twitter_login");
 		
-		
 		$sess = array("session_id" => $_SESSION["uuid"],
 					  "twitter_id" => $reply->id);
 		$ret = $this->db->save($sess, "sessions");
@@ -107,6 +106,13 @@ class EasyApp{
 		unset($_SESSION['twitter_oauth_token']);
 		unset($_SESSION['twitter_oauth_token_secret']);
 		unset($_SESSION['twitter_oauth_verify']);
+		
+		
+		$profile = $this->twitter()->fetchSomeTwitterInfo();
+		
+		// get the profile image and save it to our db too
+		$reply->avatar = $profile->profile_image_url;
+		$ret = $this->db->save($reply, "twitter_login");
 	}
 	
 	
