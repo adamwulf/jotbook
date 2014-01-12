@@ -51,7 +51,7 @@ class EasyApp{
 		if(!$this->twitter && is_array($this->sessionInfo())){
 			$session_info = $this->sessionInfo();
 			$twitter_info = $this->db->table("twitter_login")->find(array("id" => $session_info["twitter_id"]))->fetch_array();
-			$this->twitter = new EasyAppTwitter($twitter_info['oauth_token'], $twitter_info['oauth_token_secret']);
+			$this->twitter = new EasyAppTwitter($twitter_info);
 		}
 		return is_object($this->twitter);
 	}

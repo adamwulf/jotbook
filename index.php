@@ -47,7 +47,8 @@ if(isset($_GET["logout"])){
 }
 
 if($app->isLoggedIn()){
-	echo "logged in<br>";
+	echo "logged in as " . $app->twitter()->screenname() . "<br>";
+	echo "<img src='" . $app->twitter()->avatar() . "'/><br>";
 	echo "<a href='" . page_self_url() . "?logout" . "'>Log Out</a><br>";
 	
 	echo "<br><br>";
