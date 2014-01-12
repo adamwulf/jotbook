@@ -10,6 +10,9 @@ $app = new EasyApp($db);
 session_start();
 
 
+
+	$list_id = readFormValue("list_id", $_REQUEST);
+	
 if(isset($_GET["logout"])){
 	$app->logout();
     header('Location: ' . page_self_url());
@@ -85,6 +88,9 @@ if($app->isLoggedIn()){
 	echo "logged in as " . $app->twitter()->screenname() . "<br>";
 	echo "<img src='" . $app->twitter()->avatar() . "'/><br>";
 	echo "<a href='" . page_self_url() . "?logout" . "'>Log Out</a><br>";
+	echo "<br><br>";
+	echo "looking at: " . $list_id;
+
 }else{
 	echo "<a href='" . page_self_url() . "?twitter_login" . "'>";
 	echo "<img src='" . page_self_url() . "images/sign-in-with-twitter-gray.png' border=0/>";

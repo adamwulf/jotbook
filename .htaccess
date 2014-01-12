@@ -16,7 +16,7 @@ RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
 RewriteRule ^list/([a-zA-Z0-9\-_]*)$ list/$1/ [R,L]
 
 # Rewrite all other URLs to index.php/URL
-RewriteRule ^list/(([a-zA-Z0-9\-_]*))$ index.php/?list_id=$1 [QSA,L]
+RewriteRule ^list/(([a-zA-Z0-9\-_]*))/$ index.php/?list_id=$1 [QSA,L]
 
 # Rewrite all other URLs to index.php/URL
 RewriteRule ^list/([a-zA-Z0-9\-_]*)/ajax.php ajax.php/?list_id=$1 [QSA,L]
