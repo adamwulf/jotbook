@@ -3,7 +3,7 @@
 	protected $classpath;
 
 	public function __construct(){
-		$this->classpath = array(ROOT . LIBRARY);
+//		$this->classpath = array(ROOT . LIBRARY);
 	}
 
 	public function addToClasspath($dir){
@@ -18,7 +18,6 @@
 		$ok = false;
 		for($i=0;$i<count($this->classpath);$i++){
 			$path = $this->classpath[$i];
-/* 			echo "load recur \"" . $path . "\";//<br>\n"; */
 			$ok = $ok || $this->load_recursive($path, $classname);
 		}
 		return $ok;
@@ -36,17 +35,17 @@
 						if($file == "class.$classname.php"){
 							include_once $classpath . $file;
 							$ret = true;
-/* 							echo "include_once \"" . $classpath . $file . "\";//<br>\n"; */
+//							echo "include_once \"" . $classpath . $file . "\";//<br>\n";
 						}else
 						if($file == "class.Boolean.$classname.php"){
 							include_once $classpath . $file;
 							$ret = true;
-/* 							echo "include_once \"" . $classpath . $file . "\";//<br>\n"; */
+//							echo "include_once \"" . $classpath . $file . "\";//<br>\n";
 						}else
 						if($file == "interface.$classname.php"){
 							include_once $classpath . $file;
 							$ret = true;
-/* 							echo "include_once \"" . $classpath . $file . "\";//<br>\n"; */
+//							echo "include_once \"" . $classpath . $file . "\";//<br>\n";
 						}
 					}
 				}
@@ -57,13 +56,13 @@
 		return $ret;
 	}
 	
-	public function loadTestFiles(GroupTest $g){
+	public function loadTestFiles(TestSuite $g){
 		foreach($this->classpath as $c){
 			$this->loadTestFilesHelper($g, $c);
 		}
 	}
 	
-	protected function loadTestFilesHelper(GroupTest $g, $classpath){
+	protected function loadTestFilesHelper(TestSuite $g, $classpath){
 		$theList = array();
 		if ($handle = opendir($classpath)) {
 			while (false != ($file = readdir($handle))) {
@@ -73,7 +72,7 @@
 					}else{
 						if(strpos($file, "test.class.") === 0 &&
 						strpos($file, ".php") == strlen($file)-4){
-							$g->addTestFile($classpath . $file);
+							$g->addFile($classpath . $file);
 						}
 					}
 				}
@@ -134,9 +133,7 @@
 	}
   }  
   
-  
-  function milestone_autoload($classname){
-  	global $classLoader;
+  function __autoload($classname){
 //	global $control;
 //	$str = "classname: ";
 //	$str .= $classname;
@@ -144,8 +141,11 @@
 //	if(is_object($control) && !is_int(stripos($classname, "mysql"))){
 //		$control->getModel()->getLogger()->log($control->getModel(), ALogger::$HIGH, $str);
 //	}
+
 	try{
-		$ok = $classLoader->load($classname);
+		$ClassLoader = new ClassLoader();
+		$ClassLoader->addToClasspath(dirname(__FILE__) . "/");
+		$ok = $ClassLoader->load($classname);
 //		$str .= ":" . $ok;
 //		if(is_object($control) && !is_int(stripos($classname, "mysql"))){
 //			$control->getModel()->getLogger()->log($control->getModel(), ALogger::$HIGH, $str);
@@ -154,8 +154,4 @@
 		$model->getLogger()->log($model, ALogger::$HIGH, print_r($e, true));
 	}
   }
-
-spl_autoload_register('milestone_autoload');
-
-	$classLoader = new ClassLoader();
 ?>

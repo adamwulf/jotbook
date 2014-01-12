@@ -1,3 +1,10 @@
+<?
+include "include.php";
+
+$mysql = new MySQLConn(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
+$db = new JSONtoMYSQL($mysql);
+
+?>
 <html>
 	<head>
 		<script>
