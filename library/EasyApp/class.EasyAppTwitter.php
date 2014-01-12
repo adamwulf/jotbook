@@ -27,6 +27,10 @@ class EasyAppTwitter{
 	public function avatar(){
 		return $this->avatar;
 	}
+	
+	public function userId(){
+		return $this->user_id;
+	}
 		
 	public function fetchSomeTwitterInfo(){
 		$reply = $this->cb->account_verifyCredentials();
