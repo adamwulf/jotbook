@@ -20,15 +20,13 @@ if($app->isLoggedIn()){
 	if($list_id){
 		$db->save(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "stamp" => time()), "accessed_lists");
 	}
-}
 
-if($app->isLoggedIn() && isset($_GET["forget"])){
-	$list_id = readFormValue("list_id", $_REQUEST);
-	$list_table = $db->table("accessed_lists");
-	$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id));
-}
+	if(isset($_GET["forget"])){
+		$list_id = readFormValue("list_id", $_REQUEST);
+		$list_table = $db->table("accessed_lists");
+		$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id));
+	}
 
-if($app->isLoggedIn()){
 	$list_table = $db->table("accessed_lists");
 	$result = $list_table->find(array("twitter_id" => $app->twitter()->userId()));
 	$rows = array();
@@ -51,10 +49,7 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
 	    header('Location: ' . '/');
 	}
 	die();
-}
-
-	
-if(isset($_GET["logout"])){
+}else if(isset($_GET["logout"])){
 	$app->logout();
     header('Location: ' . page_self_url());
     die();
@@ -119,6 +114,9 @@ if(isset($_GET["logout"])){
 			float: right;
 			border-left: 1px solid black;
 			padding:20px;
+		}
+		#interface{
+			margin-right: 240px;
 		}
 		</style>
 	</head>

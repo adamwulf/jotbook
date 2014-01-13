@@ -67,10 +67,12 @@ function readFormValue($var, $data){
 
 
 
-function getLock(){
+function getLock($lockfile){
 	global $fp;
 
-	$lockfile = dirname(__FILE__) . "/list.data.lock";
+	if(!file_exists($lockfile)){
+		file_put_contents($lockfile, "");
+	}
 	$fp = @fopen($lockfile,'a');
 	$retries = 0; 
 	$max_retries = 100; 

@@ -20,21 +20,22 @@ try{
 	}
 	$data = json_decode($json_in);
 	
+	$filename = dirname(__FILE__) . "/../data/" . $list_id . ".data";
+	$lock_filename = dirname(__FILE__) . "/../data/" . $list_id . ".data.lock";
+	
 	////////////////////////////////////////////
 	////////////////////////////////////////////
 	//
 	// get the list data
 	// and lock the file
 	
-	getLock();	
+	getLock($lock_filename);	
 	
 	//
 	// got the lock, do stuff
 	////////////////////////////////////////////
 	////////////////////////////////////////////
 
-	$filename = dirname(__FILE__) . "/../data/" . $list_id . ".data";
-	
 	$list = new Listotron($filename);
 	
 	$error_file = "error." . time() . ".log";
