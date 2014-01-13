@@ -1,4 +1,26 @@
 <?
+
+if(isset($_GET["create_list"])){
+
+	$list_id = $_GET["create_list"];
+	
+	$list_id = str_replace(" ", "-", $list_id);
+	
+	$list_id = preg_replace('/[^a-zA-Z0-9_\-]/', '', $list_id);
+	
+	if(!$list_id){
+		header("Location: /");
+		exit;
+	}
+	
+	header("Location: http://jotbook.net/list/" . $list_id);
+	exit;
+	
+	
+}
+
+
+
 include "include.php";
 require_once ('codebird-php/src/codebird.php');
 
@@ -114,6 +136,7 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
 			float: right;
 			border-left: 1px solid black;
 			padding:20px;
+			min-height: 200px;
 		}
 		#interface{
 			margin-right: 240px;
@@ -162,7 +185,7 @@ if($app->isLoggedIn()){
 	}
 	
 	echo "<br><br>";
-	echo "<a href='?forget'>forget this list</a><br>";
+	echo "<a href='?forget'>remove list from my lists</a><br>";
 	echo "(list won't be deleted)<br>";
 
 }else{
@@ -177,13 +200,42 @@ if($app->isLoggedIn()){
 	echo "<div id='users'></div>";
 	echo "<br>";
 	echo "</div>";
-
+}
+	
+if($list_id){
+	echo "<br><br>";
+	$url = "http://jotbook.net/list/" . $list_id;
+	echo "Access this list anytime at <a href='$url'>$url</a>.";
+	echo "<br><br>";
+	echo "Share this URL with others to edit this list together!";
 }
 ?>
 </div>
+
+<?
+if(!$list_id){
+?>
+	<div style='padding:100px;'>
+	JotBook.net lets you easily create and edit lists together with others. Name your list below, then share the URL with others.
+	<br><br>
+	<form action="/">
+	http://jotbook.net/list/<input type=text name=create_list size=30 placeholder="your list name"/>
+	<input type=submit value=Go>
+	</form>
+	</div>
+<?	
+}else{
+?>
+
 <div id="interface">
 </div>
+
+<!--
 <input type='button' value='stop' id='stopbutton'>
 <input type='button' value='refresh' id='refreshbutton'>
+-->
+<?
+}
+?>
 </body>
 </html>
