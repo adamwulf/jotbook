@@ -1,4 +1,10 @@
 <?
+//
+//
+// a debug script
+
+
+
 
 include "config.php";
 

@@ -4,6 +4,12 @@ include "config.php";
 include "functions.php";
 include "include.classloader.php";
 
+putenv("TZ=GMT");
+
+if(date("Z") != 0){
+	throw new Exception("server is in wrong timezone: " . date("O") . ":" . date("Z"));
+}
+
 error_reporting(E_ALL);
 
 define("ROOT", dirname(__FILE__) . "/");
