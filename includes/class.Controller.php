@@ -3,10 +3,12 @@
 class Controller{
 
 	private $listotron;
+	private $twitter;
 
-	public function __construct($list){
+	public function __construct($list, $twitter){
 		
 		$this->listotron = $list;
+		$this->twitter = $twitter;
 		
 	}
 
@@ -34,8 +36,7 @@ class Controller{
 				}
 			}else if(isset($data[$i]->location)){
 				// request to load all rows
-	
-				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id);
+				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id, $this->twitter);
 	
 				$out = array();
 				$out["error"] = false;
@@ -51,7 +52,7 @@ class Controller{
 			}else if(isset($data[$i]->insert_after)){
 				// insert a row after the input row
 				
-				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id);
+				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id, $this->twitter);
 				
 				$out = array();
 				$out["error"] = false;
@@ -60,7 +61,7 @@ class Controller{
 			}else if(isset($data[$i]->insert_before)){
 				// insert a row before the input row
 	
-				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id);
+				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id, $this->twitter);
 	
 				$out = array();
 				$out["error"] = false;
@@ -68,7 +69,7 @@ class Controller{
 				$out["rows"] = $listotron->insertRowBefore($data[$i]->row_id, $data[$i]->user_id);
 			}else if(isset($data[$i]->edit)){
 				// indent a row, and return all changed rows
-				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id);
+				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id, $this->twitter);
 	
 				$out = array();
 				$out["error"] = false;
@@ -77,7 +78,7 @@ class Controller{
 			}else if(isset($data[$i]->indent)){
 				// indent a row, and return all changed rows
 	
-				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id);
+				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id, $this->twitter);
 	
 				$out = array();
 				$out["error"] = false;
@@ -86,7 +87,7 @@ class Controller{
 			}else if(isset($data[$i]->outdent)){
 				// outdent a row, and return all changed rows
 	
-				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id);
+				$listotron->trackUser($data[$i]->user_id, $data[$i]->row_id, $this->twitter);
 	
 				$out = array();
 				$out["error"] = false;

@@ -294,7 +294,10 @@ jQuery.extend({
 			return rows.get(i);
 		}
 				
-		this.loadUserPosition = function(user_id, row_id){
+		this.loadUserPosition = function(userLoc){
+			console.log(userLoc);
+			var user_id = userLoc.user_id;
+			var row_id = userLoc.row_id;
 			var old = locations.get(user_id);
 			if(old){
 				if(rows.get(old)){
@@ -303,6 +306,26 @@ jQuery.extend({
 			}
 			if(rows.get(row_id)) rows.get(row_id).addColor(getColor(user_id));
 			locations.put(user_id, row_id);
+			
+			$("#user_box").show();
+			
+			$user_obj = $('#users').find("#" + user_id);
+			if(!$user_obj.length){
+				$user_obj = $("<div id='" + user_id + "'></div>");
+				$('#users').append($user_obj);
+			}
+
+			if(!userLoc.screenname){
+				$user_obj.text("Anonymous");
+			}else{
+				if($user_obj.text() != userLoc.screenname){
+					$user_obj.empty();
+					$avatar = $("<img src='" + userLoc.avatar + "' width=20 height=20 />");
+					$user_obj.append($avatar);
+					$user_obj.append($("<a target=_new href='http://twitter.com/" + userLoc.screenname + "'>" + userLoc.screenname + "</a>"));
+				}
+			}
+			$user_obj.css("border", "2px solid " + getColor(user_id));
 		}
 
 		/**************************************

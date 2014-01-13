@@ -95,8 +95,8 @@ jQuery.extend({
 				view.loadRow(row);
 			},
 			savingFinished : function() { },
-			loadUserPosition : function(user_id, row_id){
-				view.loadUserPosition(user_id, row_id);
+			loadUserPosition : function(userLoc){
+				view.loadUserPosition(userLoc);
 			}
 		});
 		model.addListener(mlist);

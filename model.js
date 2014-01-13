@@ -241,7 +241,7 @@ jQuery.extend({
 				$.each(data.tracking, function(item){
 					var userLoc = data.tracking[item];
 					if(userLoc.user_id != that.getUserId()){
-						that.notifyLoadUserPosition(userLoc.user_id, userLoc.row_id);
+						that.notifyLoadUserPosition(userLoc);
 					}
 				});
 			}

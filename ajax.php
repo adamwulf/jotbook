@@ -1,6 +1,14 @@
 <?
 
 include "include.php";
+require_once ('codebird-php/src/codebird.php');
+
+$mysql = new MySQLConn(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
+$db = new JSONtoMYSQL($mysql);
+$app = new EasyApp($db);
+\Codebird\Codebird::setConsumerKey(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
+// start session for tracking logged in user
+session_start();
 
 //$mysql = mysql_connect(DB_HOST, DB_USER , DB_PASSWORD);
 //mysql_select_db(DB_NAME, $mysql);
@@ -49,7 +57,7 @@ try{
 	}
 	
 	
-	$control = new Controller($list);
+	$control = new Controller($list, $app->twitter());
 	$ret = $control->process($data);
 
 	$ok_after = $list->isValidHuh();

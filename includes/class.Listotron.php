@@ -257,11 +257,15 @@ class Listotron{
 	/**
 	 * record the user's position in the list
 	 */
-	public function trackUser($user_id, $row_id){
+	public function trackUser($user_id, $row_id, $twitter){
 		for($i=0;$i<count($this->data["users"]);$i++){
 			if($this->data["users"][$i]["user_id"] == $user_id){
 				$this->data["users"][$i]["stamp"] = $this->getNOW();
 				$this->data["users"][$i]["row_id"] = $row_id;
+				if($twitter){
+					$this->data["users"][$i]["screenname"] = $twitter->screenname();
+					$this->data["users"][$i]["avatar"] = $twitter->avatar();
+				}
 				$this->save();
 				return;
 			}

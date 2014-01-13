@@ -118,6 +118,20 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
 		#interface{
 			margin-right: 240px;
 		}
+		#users div img{
+			width:20px;
+			height:20px;
+			float:left;
+			margin-right:10px;
+		}
+		#users div{
+			line-height:20px;
+			height:20px;
+			margin-bottom:2px;
+		}
+		#user_box{
+			display: none;
+		}
 		</style>
 	</head>
 <body>
@@ -130,6 +144,11 @@ if($app->isLoggedIn()){
 	echo "<br><br>";
 	
 	
+	echo "<div id='user_box'>";
+	echo "<b>People</b><br>";
+	echo "<div id='users'></div>";
+	echo "<br>";
+	echo "</div>";
 
 	echo "<b>My Lists</b><br>";
 	for($i=0;$i<count($my_lists);$i++){
@@ -151,6 +170,14 @@ if($app->isLoggedIn()){
 	echo "<img src='" . page_self_url() . "images/sign-in-with-twitter-gray.png' border=0/>";
 	echo "</a>";
 	echo "<br><br>";
+
+
+	echo "<div id='user_box'>";
+	echo "<b>Active People</b><br>";
+	echo "<div id='users'></div>";
+	echo "<br>";
+	echo "</div>";
+
 }
 ?>
 </div>
