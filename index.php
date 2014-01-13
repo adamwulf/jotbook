@@ -125,7 +125,7 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
 			width: 90%;
 		}
 		li{
-			background: url(bullet.png) no-repeat 1px 6px;
+			background: url(/includes/bullet.png) no-repeat 1px 6px;
 			padding-left: 10px;
 		}
 		ul{

@@ -134,24 +134,8 @@
   }  
   
   function __autoload($classname){
-//	global $control;
-//	$str = "classname: ";
-//	$str .= $classname;
-//	$str .= "\n";
-//	if(is_object($control) && !is_int(stripos($classname, "mysql"))){
-//		$control->getModel()->getLogger()->log($control->getModel(), ALogger::$HIGH, $str);
-//	}
-
-	try{
-		$ClassLoader = new ClassLoader();
-		$ClassLoader->addToClasspath(dirname(__FILE__) . "/");
-		$ok = $ClassLoader->load($classname);
-//		$str .= ":" . $ok;
-//		if(is_object($control) && !is_int(stripos($classname, "mysql"))){
-//			$control->getModel()->getLogger()->log($control->getModel(), ALogger::$HIGH, $str);
-//		}
-	}catch(Exception $e){
-		$model->getLogger()->log($model, ALogger::$HIGH, print_r($e, true));
-	}
+	$ClassLoader = new ClassLoader();
+	$ClassLoader->addToClasspath(dirname(__FILE__) . "/");
+	$ClassLoader->load($classname);
   }
 ?>

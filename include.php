@@ -1,6 +1,8 @@
 <?
 
 include "config.php";
+define("ROOT", dirname(__FILE__) . "/");
+
 include "functions.php";
 include "include.classloader.php";
 
@@ -12,10 +14,6 @@ if(date("Z") != 0){
 
 error_reporting(E_ALL);
 
-define("ROOT", dirname(__FILE__) . "/");
-define("LIBRARY", "library/");
-define("DOMAIN", "welcome.totheinter.net");
-define("COOKIENAME", "aurora");
 
 putenv("TZ=GMT");
 
