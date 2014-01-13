@@ -1,2 +1,0 @@
-[15-Nov-2008 19:34:55] PHP Warning:  Unknown: failed to open stream: No such file or directory in Unknown on line 0
-[15-Nov-2008 19:34:55] PHP Fatal error:  Unknown: Failed opening required '/home/internet/public_html/welcome/prototypes/listotron4/ajax.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in Unknown on line 0
