@@ -192,7 +192,7 @@ if($app->isLoggedIn()){
 	echo "<a href='" . page_self_url() . "?twitter_login" . "'>";
 	echo "<img src='" . page_self_url() . "images/sign-in-with-twitter-gray.png' border=0/>";
 	echo "</a>";
-	echo "<br><br>";
+	echo "<br>(optional)<br><br>";
 
 
 	echo "<div id='user_box'>";
@@ -215,13 +215,21 @@ if($list_id){
 <?
 if(!$list_id){
 ?>
-	<div style='padding:100px;'>
-	JotBook.net lets you easily create and edit lists together with others. Name your list below, then share the URL with others.
+	<div style='padding:100px;margin-right:240px;'>
+	<b>JotBook.net</b> lets you easily create and edit lists together with others.
+	Each list is given a permanent URL. Share that URL with others to collaborate on your list!
 	<br><br>
 	<form action="/">
 	http://jotbook.net/list/<input type=text name=create_list size=30 placeholder="your list name"/>
 	<input type=submit value=Go>
 	</form>
+	
+	<br><br><br><br><br><br><br><br>
+	Jotbook was created by <a href='https://twitter.com/adamwulf'>Adam Wulf</a> and <a href='https://twitter.com/buckwilson'>Buck Wilson</a> many years ago
+	as a prototype for realtime list collaboration. What you see here is the first exploratory phase of building out the service, which we later
+	abandoned. As unrefined as it is, I've found it useful for quick note taking, so I've opened it up for wider use. Feel free to write some notes
+	and lists here, or download the source below to run on your own server or tinker with. Have fun!<br>- Adam<br><br>
+	JotBook is open source - find it at <a href='https://github.com/adamwulf/jotbook'>https://github.com/adamwulf/jotbook</a>.
 	</div>
 <?	
 }else{
