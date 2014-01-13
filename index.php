@@ -231,13 +231,25 @@ if(!$list_id){
 	and lists here, or download the source below to run on your own server or tinker with. Have fun!<br>- Adam<br><br>
 	JotBook is open source - find it at <a href='https://github.com/adamwulf/jotbook'>https://github.com/adamwulf/jotbook</a>.
 	</div>
+	<br><br>
 <?	
 }else{
 ?>
 
 <div id="interface">
 </div>
-
+<?
+if($list_id){
+?>
+<br><br><br><br>
+<div style='font-size:10pt'>
+(Click a row to edit. Up/Down arrows to move between rows. Tab and Shift+Tab to indent, unindent. Enter to add new rows. Esc to finish editing.)
+<br><br>
+Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or comments about JotBook.net.
+</div>
+<?
+}
+?>
 <!--
 <input type='button' value='stop' id='stopbutton'>
 <input type='button' value='refresh' id='refreshbutton'>
