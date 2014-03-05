@@ -15,7 +15,6 @@ session_start();
 // create list in our account if we're logged in,
 // otherwise as an anonymous list
 if(isset($_GET["create_list"])){
-
 	$list_id = $_GET["create_list"];
 	
 	$list_id = str_replace(" ", "-", $list_id);
@@ -36,7 +35,6 @@ if(isset($_GET["create_list"])){
 }
 
 
-
 $list_id = readFormValue("list_id", $_REQUEST);
 $owner_name = readFormValue("owner_name", $_REQUEST);
 
@@ -46,6 +44,14 @@ if(!strlen($owner_name)){
 }
 // figure out my username if i'm logged in, and default to anonymous "list" otherwise
 $my_name = $app->isLoggedIn() ? $app->twitter()->screenname() : "list";
+
+if($app->isLoggedIn() && isset($_GET["copy"])){
+	// copy the current list to the user's own account
+	$list_id = $app->copyList($owner_name, $list_id, $my_name);
+	header("Location: http://jotbook.net/" . $app->twitter()->screenname() . "/" . $list_id . "/");
+	exit;
+}
+
 
 // a list is invalid if it doesn't exist yet and it'd be created it someone else's account instead of ours
 $invalid_list = !($owner_name == "list" || $owner_name == $my_name) && !$app->listExistsHuh($owner_name, $list_id);
@@ -235,6 +241,14 @@ if($app->isLoggedIn()){
 			}
 		}
 	}
+	echo "<br>";
+	if($owner_name != $my_name){
+		echo "<br>";
+		echo "<a href='?copy'>copy list to my account</a><br>";
+	}
+	echo "<br>";
+	echo "<a href='?forget'>forget this list</a><br>";
+	echo "(list won't be deleted, but will be removed from sidebar)<br>";
 	
 	echo "<br><br>";
 	echo "<a href='?forget'>forget this list</a><br>";

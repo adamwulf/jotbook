@@ -119,6 +119,23 @@ class EasyApp{
 	public function listExistsHuh($owner_name, $list_id){
 		return file_exists(DATA_LOC . "/" . $owner_name . "/" . $list_id . ".data");
 	}
+	
+	
+	public function copyList($owner_name, $list_id, $new_owner_name){
+		$loc = DATA_LOC . "/" . $owner_name . "/" . $list_id . ".data";
+		if(file_exists($loc)){
+			$new_list_id = $list_id;
+			$new_loc = DATA_LOC . "/" . $new_owner_name . "/" . $list_id . ".data";
+			$count = 2;
+			while(file_exists($new_loc)){
+				$new_list_id = $list_id . "-" . $count;
+				$new_loc = DATA_LOC . "/" . $new_owner_name . "/" . $new_list_id . ".data";
+				$count ++;
+			}
+			return $new_list_id;
+		}
+		return false;
+	}
 
 }
 
