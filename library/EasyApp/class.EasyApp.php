@@ -116,6 +116,9 @@ class EasyApp{
 	}
 	
 	
+	public function listExistsHuh($owner_name, $list_id){
+		return file_exists(DATA_LOC . "/" . $owner_name . "/" . $list_id . ".data");
+	}
 
 }
 

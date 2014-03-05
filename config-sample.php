@@ -1,5 +1,8 @@
 <?
 
+// ** Data File Location. no trailing "/"!
+define("DATA_LOC", "/location/of/the/data/files");
+
 // ** MySQL settings ** //
 define("DB_HOST", "Database host");
 define("DB_NAME", "Database name");

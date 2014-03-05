@@ -44,13 +44,21 @@ if(!strlen($owner_name)){
 	// default owner of lists is just public "list"
 	$owner_name = "list";
 }
+// figure out my username if i'm logged in, and default to anonymous "list" otherwise
+$my_name = $app->isLoggedIn() ? $app->twitter()->screenname() : "list";
+
+// a list is invalid if it doesn't exist yet and it'd be created it someone else's account instead of ours
+$invalid_list = !($owner_name == "list" || $owner_name == $my_name) && !$app->listExistsHuh($owner_name, $list_id);
 
 
 $my_lists = array();
+$not_my_lists = array();
 if($app->isLoggedIn()){
+	$my_name = $app->twitter()->screenname();
 	$list_table = $db->table("accessed_lists");
 	$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "owner_name" => $owner_name));
-	if($list_id){
+	if($list_id && !$invalid_list){
+		// don't save an accessed list if it doesn't exist in another user's account
 		$db->save(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "owner_name" => $owner_name, "stamp" => time()), "accessed_lists");
 	}
 
@@ -62,22 +70,36 @@ if($app->isLoggedIn()){
 
 	$list_table = $db->table("accessed_lists");
 	$result = $list_table->find(array("twitter_id" => $app->twitter()->userId()));
-	$rows = array();
+	$mine = array();
+	$mine_key = array();
+	$theirs = array();
+	$theirs_key = array();
 	while($row = $result->fetch_array()){
-		$stamp[]  = $row['list_id'] . "/" . $row['owner_name'];
-    	$rows[] = $row;
+		if($row['owner_name'] == $my_name){
+			$mine_key[]  = $row['list_id'] . "/" . $row['owner_name'];
+	    	$mine[] = $row;
+		}else{
+			$theirs_key[]  = $row['list_id'] . "/" . $row['owner_name'];
+	    	$theirs[] = $row;
+		}
 	}
 	
-	array_multisort($stamp, SORT_ASC, $rows);
+	array_multisort($mine_key, SORT_ASC, $mine);
+	array_multisort($theirs_key, SORT_ASC, $theirs);
 	
-	$my_lists = $rows;
+	$my_lists = $mine;
+	$not_my_lists = $theirs;
 }
+
+
 
 
 
 if($app->isLoggedIn() && isset($_GET["forget"])){
 	if(count($my_lists)){
 	    header('Location: ' . '/' . $my_lists[0]["owner_name"] . '/' . $my_lists[0]["list_id"] . '/');
+	}else if(count($not_my_lists)){
+	    header('Location: ' . '/' . $not_my_lists[0]["owner_name"] . '/' . $not_my_lists[0]["list_id"] . '/');
 	}else{
 	    header('Location: ' . '/');
 	}
@@ -175,14 +197,21 @@ if($app->isLoggedIn()){
 	echo "logged in as " . $app->twitter()->screenname() . "<br>";
 	echo "<img src='" . $app->twitter()->avatar() . "'/><br>";
 	echo "<a href='" . page_self_url() . "?logout" . "'>Log Out</a><br>";
-	echo "<br><br>";
+	echo "<br>";
 	
 	
 	echo "<div id='user_box'>";
-	echo "<b>People</b><br>";
+	echo "<b>Active People</b><br>";
 	echo "<div id='users'></div>";
 	echo "<br>";
 	echo "</div>";
+
+	if($list_id){
+		echo "<b>Make New List</b><br>";
+		echo "<form action=/ method=GET>";
+		echo "<input name=create_list type=text style='width:120px'><input type='submit' value='Go' style='width:40px;'/>";
+		echo "</form>";
+	}
 
 	echo "<b>My Lists</b><br>";
 	for($i=0;$i<count($my_lists);$i++){
@@ -190,14 +219,26 @@ if($app->isLoggedIn()){
 			if($list_id == $my_lists[$i]["list_id"] && $owner_name == $my_lists[$i]["owner_name"]){
 				echo $list_id . "<br>";
 			}else{
-				echo "<a href='/" . $my_lists[$i]["owner_name"] . "/" . urlencode($my_lists[$i]["list_id"]) . "'>" . $my_lists[$i]["list_id"] . "</a><br>";
+				echo "<a href='/" . $my_lists[$i]["owner_name"] . "/" . urlencode($my_lists[$i]["list_id"]) . "/'>" . $my_lists[$i]["list_id"] . "</a><br>";
+			}
+		}
+	}
+	if(count($not_my_lists)){
+		echo "<br><b>Other Lists</b><br>";
+		for($i=0;$i<count($not_my_lists);$i++){
+			if($not_my_lists[$i]["list_id"] != ""){
+				if($list_id == $not_my_lists[$i]["list_id"] && $owner_name == $not_my_lists[$i]["owner_name"]){
+					echo $list_id . "<br>";
+				}else{
+					echo "<a href='/" . $not_my_lists[$i]["owner_name"] . "/" . urlencode($not_my_lists[$i]["list_id"]) . "/'>" . $not_my_lists[$i]["list_id"] . "</a><br>";
+				}
 			}
 		}
 	}
 	
 	echo "<br><br>";
-	echo "<a href='?forget'>remove list from my lists</a><br>";
-	echo "(list won't be deleted)<br>";
+	echo "<a href='?forget'>forget this list</a><br>";
+	echo "(list won't be deleted, but will be removed from sidebar)<br>";
 
 }else{
 	echo "<a href='" . page_self_url() . "?twitter_login" . "'>";
@@ -211,37 +252,63 @@ if($app->isLoggedIn()){
 	echo "<div id='users'></div>";
 	echo "<br>";
 	echo "</div>";
+	
+	if($list_id){
+		echo "<br><br>";
+		echo "<b>Make New List</b><br>";
+		echo "<form action=/ method=GET>";
+		echo "<input name=create_list type=text style='width:120px'><input type='submit' value='Go' style='width:40px;'/>";
+		echo "</form>";
+	}
 }
 	
 if($list_id){
 	echo "<br><br>";
-	$url = "http://jotbook.net/list/" . $list_id;
+	$url = "http://jotbook.net/" . $owner_name . "/" . $list_id;
 	echo "Access this list anytime at <a href='$url'>$url</a>.";
 	echo "<br><br>";
 	echo "Share this URL with others to edit this list together!";
-	echo "<br><br>";
-	echo "Make New List:<br>";
-	echo "<form action=/ method=GET>";
-	echo "<input name=create_list type=text style='width:120px'><input type='submit' value='Go' style='width:40px;'/>";
-	echo "</form>";
 }
 ?>
 </div>
 
 <?
+
+
+
 if(!$list_id){
 ?>
 	<div style='padding:100px;margin-right:240px;'>
-	<b>JotBook.net</b> lets you easily create and edit lists together with others.
-	Each list is given a permanent URL. Share that URL with others to collaborate on your list!
+	<b><a href='http://jotbook.net'>Jotbook.net</a></b> lets you easily create and edit lists together with others.
+	Each list is given a permanent and public URL. Share that URL with others to collaborate on your list! All lists are editable by anyone if you give them the URL!
 	<br><br>
 	<form action="/">
-	http://jotbook.net/list/<input type=text name=create_list size=30 placeholder="your list name"/>
+	http://jotbook.net/<?=$my_name?>/<input type=text name=create_list size=30 placeholder="your list name"/>
 	<input type=submit value=Go>
 	</form>
 	
 	<br><br><br><br><br><br><br><br>
-	JotBook is open source - find it at <a href='https://github.com/adamwulf/jotbook'>https://github.com/adamwulf/jotbook</a>.
+	Jotbook is open source - find it at <a href='https://github.com/adamwulf/jotbook'>https://github.com/adamwulf/jotbook</a>.
+	<br><br>
+	Jotbook was created by <a href='https://twitter.com/adamwulf'>Adam Wulf</a> and <a href='https://twitter.com/buckwilson'>Buck Wilson</a> many years ago
+	as a prototype for realtime list collaboration. What you see here is the first exploratory phase of building out the service, which we later
+	abandoned. As unrefined as it is, I've found it useful for quick note taking, so I've opened it up for wider use. Feel free to write some notes
+	and lists here, or download the source below to run on your own server or tinker with. Have fun!<br>- Adam<br><br>
+	</div>
+<?	
+}else if($invalid_list){
+	// i can only add a list ot the anonymous url or to my username's url
+?>
+	<div style='padding:100px;margin-right:240px;'>
+	<b><a href='http://jotbook.net'>Jotbook.net</a></b> lets you easily create and edit lists together with others.
+	<br><br>
+	<b>404</b> - The list "<?=$list_id?>" does not exist in <?=$owner_name?>'s account.<br><br>
+	Create this list at <a href='http://jotbook.net/list/?create_list=<?=$list_id?>'>http://jotbook.net/<?=$my_name?>/<?=$list_id?>/</a> instead.
+	
+	<br><br><br><br><br><br><br><br>
+		
+	
+	Jotbook is open source - find it at <a href='https://github.com/adamwulf/jotbook'>https://github.com/adamwulf/jotbook</a>.
 	<br><br>
 	Jotbook was created by <a href='https://twitter.com/adamwulf'>Adam Wulf</a> and <a href='https://twitter.com/buckwilson'>Buck Wilson</a> many years ago
 	as a prototype for realtime list collaboration. What you see here is the first exploratory phase of building out the service, which we later
@@ -250,6 +317,12 @@ if(!$list_id){
 	</div>
 <?	
 }else{
+
+
+
+
+
+
 ?>
 
 <div id="interface">
@@ -261,7 +334,7 @@ if($list_id){
 <div style='font-size:10pt'>
 (Click a row to edit. Up/Down arrows to move between rows. Tab and Shift+Tab to indent, unindent. Enter to add new rows. Esc to finish editing.)
 <br><br>
-Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or comments about JotBook.net.
+Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or comments about Jotbook.
 </div>
 <?
 }

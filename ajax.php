@@ -14,10 +14,33 @@ session_start();
 //mysql_select_db(DB_NAME, $mysql);
 
 try{
-	
-	
+
+	$my_name = "list";
+	if($app->isLoggedIn()){
+		$my_name = $app->twitter()->screenname();
+	}
 	$list_id = readFormValue("list_id", $_REQUEST);
 	$owner_name = readFormValue("owner_name", $_REQUEST);
+	
+	
+
+	// generate filenames
+	$filename = DATA_LOC . "/" . $owner_name . "/" . $list_id . ".data";
+	$lock_filename = DATA_LOC . "/" . $owner_name . "/" . $list_id . ".data.lock";
+	
+	// check permissions
+	// only create lists in the anonymous space
+	// or in your username, though can access anywhere
+	if(!($owner_name == "list" || $owner_name == $my_name)){
+		if(!$app->listExistsHuh($owner_name, $list_id)){
+			header('HTTP/1.0 401 Unauthorized');
+			exit;
+		}
+	}
+
+	//
+	// at this point, the list either exists already
+	// or we're authorized to create it
 	
 	//
 	// get the JSON input and parse
@@ -28,10 +51,7 @@ try{
 		$json_in = $_REQUEST["data"];
 	}
 	$data = json_decode($json_in);
-	
-	$filename = dirname(__FILE__) . "/../data/" . $owner_name . "/" . $list_id . ".data";
-	$lock_filename = dirname(__FILE__) . "/../data/" . $owner_name . "/" . $list_id . ".data.lock";
-	
+
 	////////////////////////////////////////////
 	////////////////////////////////////////////
 	//
