@@ -70,6 +70,11 @@ function readFormValue($var, $data){
 function getLock($lockfile){
 	global $fp;
 
+	$dir = dirname($lockfile);
+	if(!is_dir($dir)){
+		mkdir($dir);
+	}
+
 	if(!file_exists($lockfile)){
 		file_put_contents($lockfile, "");
 	}

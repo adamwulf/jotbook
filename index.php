@@ -1,5 +1,19 @@
 <?
 
+include "include.php";
+require_once ('codebird-php/src/codebird.php');
+
+$mysql = new MySQLConn(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
+$db = new JSONtoMYSQL($mysql);
+$app = new EasyApp($db);
+\Codebird\Codebird::setConsumerKey(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
+// start session for tracking logged in user
+session_start();
+
+
+//
+// create list in our account if we're logged in,
+// otherwise as an anonymous list
 if(isset($_GET["create_list"])){
 
 	$list_id = $_GET["create_list"];
@@ -13,47 +27,44 @@ if(isset($_GET["create_list"])){
 		exit;
 	}
 	
-	header("Location: http://jotbook.net/list/" . $list_id);
+	if($app->isLoggedIn()){
+		header("Location: http://jotbook.net/" . $app->twitter()->screenname() . "/" . $list_id . "/");
+	}else{
+		header("Location: http://jotbook.net/list/" . $list_id . "/");
+	}
 	exit;
-	
-	
 }
 
 
 
-include "include.php";
-require_once ('codebird-php/src/codebird.php');
-
-$mysql = new MySQLConn(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
-$db = new JSONtoMYSQL($mysql);
-$app = new EasyApp($db);
-\Codebird\Codebird::setConsumerKey(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
-// start session for tracking logged in user
-session_start();
-
 $list_id = readFormValue("list_id", $_REQUEST);
+$owner_name = readFormValue("owner_name", $_REQUEST);
 
+if(!strlen($owner_name)){
+	// default owner of lists is just public "list"
+	$owner_name = "list";
+}
 
 
 $my_lists = array();
 if($app->isLoggedIn()){
 	$list_table = $db->table("accessed_lists");
-	$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id));
+	$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "owner_name" => $owner_name));
 	if($list_id){
-		$db->save(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "stamp" => time()), "accessed_lists");
+		$db->save(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "owner_name" => $owner_name, "stamp" => time()), "accessed_lists");
 	}
 
 	if(isset($_GET["forget"])){
 		$list_id = readFormValue("list_id", $_REQUEST);
 		$list_table = $db->table("accessed_lists");
-		$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id));
+		$list_table->delete(array("twitter_id" => $app->twitter()->userId(), "list_id" => $list_id, "owner_name" => $owner_name));
 	}
 
 	$list_table = $db->table("accessed_lists");
 	$result = $list_table->find(array("twitter_id" => $app->twitter()->userId()));
 	$rows = array();
 	while($row = $result->fetch_array()){
-		$stamp[]  = $row['list_id'];
+		$stamp[]  = $row['list_id'] . "/" . $row['owner_name'];
     	$rows[] = $row;
 	}
 	
@@ -66,7 +77,7 @@ if($app->isLoggedIn()){
 
 if($app->isLoggedIn() && isset($_GET["forget"])){
 	if(count($my_lists)){
-	    header('Location: ' . '/list/' . $my_lists[0]["list_id"]);
+	    header('Location: ' . '/' . $my_lists[0]["owner_name"] . '/' . $my_lists[0]["list_id"] . '/');
 	}else{
 	    header('Location: ' . '/');
 	}
@@ -176,10 +187,10 @@ if($app->isLoggedIn()){
 	echo "<b>My Lists</b><br>";
 	for($i=0;$i<count($my_lists);$i++){
 		if($my_lists[$i]["list_id"] != ""){
-			if($list_id == $my_lists[$i]["list_id"]){
+			if($list_id == $my_lists[$i]["list_id"] && $owner_name == $my_lists[$i]["owner_name"]){
 				echo $list_id . "<br>";
 			}else{
-				echo "<a href='/list/" . urlencode($my_lists[$i]["list_id"]) . "'>" . $my_lists[$i]["list_id"] . "</a><br>";
+				echo "<a href='/" . $my_lists[$i]["owner_name"] . "/" . urlencode($my_lists[$i]["list_id"]) . "'>" . $my_lists[$i]["list_id"] . "</a><br>";
 			}
 		}
 	}
@@ -230,13 +241,13 @@ if(!$list_id){
 	</form>
 	
 	<br><br><br><br><br><br><br><br>
+	JotBook is open source - find it at <a href='https://github.com/adamwulf/jotbook'>https://github.com/adamwulf/jotbook</a>.
+	<br><br>
 	Jotbook was created by <a href='https://twitter.com/adamwulf'>Adam Wulf</a> and <a href='https://twitter.com/buckwilson'>Buck Wilson</a> many years ago
 	as a prototype for realtime list collaboration. What you see here is the first exploratory phase of building out the service, which we later
 	abandoned. As unrefined as it is, I've found it useful for quick note taking, so I've opened it up for wider use. Feel free to write some notes
 	and lists here, or download the source below to run on your own server or tinker with. Have fun!<br>- Adam<br><br>
-	JotBook is open source - find it at <a href='https://github.com/adamwulf/jotbook'>https://github.com/adamwulf/jotbook</a>.
 	</div>
-	<br><br>
 <?	
 }else{
 ?>

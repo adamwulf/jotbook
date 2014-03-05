@@ -17,6 +17,7 @@ try{
 	
 	
 	$list_id = readFormValue("list_id", $_REQUEST);
+	$owner_name = readFormValue("owner_name", $_REQUEST);
 	
 	//
 	// get the JSON input and parse
@@ -28,8 +29,8 @@ try{
 	}
 	$data = json_decode($json_in);
 	
-	$filename = dirname(__FILE__) . "/../data/" . $list_id . ".data";
-	$lock_filename = dirname(__FILE__) . "/../data/" . $list_id . ".data.lock";
+	$filename = dirname(__FILE__) . "/../data/" . $owner_name . "/" . $list_id . ".data";
+	$lock_filename = dirname(__FILE__) . "/../data/" . $owner_name . "/" . $list_id . ".data.lock";
 	
 	////////////////////////////////////////////
 	////////////////////////////////////////////
