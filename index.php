@@ -208,6 +208,11 @@ if($list_id){
 	echo "Access this list anytime at <a href='$url'>$url</a>.";
 	echo "<br><br>";
 	echo "Share this URL with others to edit this list together!";
+	echo "<br><br>";
+	echo "Make New List:<br>";
+	echo "<form action=/ method=GET>";
+	echo "<input name=create_list type=text style='width:120px'><input type='submit' value='Go' style='width:40px;'/>";
+	echo "</form>";
 }
 ?>
 </div>
@@ -258,6 +263,15 @@ Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or c
 }
 ?>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-180672-20', 'jotbook.net');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>
