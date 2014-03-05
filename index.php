@@ -250,10 +250,6 @@ if($app->isLoggedIn()){
 	echo "<a href='?forget'>forget this list</a><br>";
 	echo "(list won't be deleted, but will be removed from sidebar)<br>";
 	
-	echo "<br><br>";
-	echo "<a href='?forget'>forget this list</a><br>";
-	echo "(list won't be deleted, but will be removed from sidebar)<br>";
-
 }else{
 	echo "<a href='" . page_self_url() . "?twitter_login" . "'>";
 	echo "<img src='" . page_self_url() . "images/sign-in-with-twitter-gray.png' border=0/>";
