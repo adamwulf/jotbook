@@ -154,18 +154,31 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
 			});
 		</script>
 		<style>
+		li .checkbox{
+			display: block;
+			position: absolute;
+			left: -8px;
+			top: 2px;
+		}
 		li span{
 			display: block;
 			padding:3px;
 			height: 14px;
 			font-size: 10pt;
 		}
-		li input{
+		li input.str{
 			width: 90%;
+		}
+		li.completed > input.str{
+			text-decoration: line-through;
+		}
+		li.completed > span{
+			text-decoration: line-through;
 		}
 		li{
 			background: url(/includes/bullet.png) no-repeat 1px 6px;
 			padding-left: 10px;
+			position: relative;
 		}
 		ul{
 			list-style: none;
@@ -303,7 +316,9 @@ if(!$list_id){
 	Jotbook was created by <a href='https://twitter.com/adamwulf'>Adam Wulf</a> and <a href='https://twitter.com/buckwilson'>Buck Wilson</a> many years ago
 	as a prototype for realtime list collaboration. What you see here is the first exploratory phase of building out the service, which we later
 	abandoned. As unrefined as it is, I've found it useful for quick note taking, so I've opened it up for wider use. Feel free to write some notes
-	and lists here, or download the source below to run on your own server or tinker with. Have fun!<br>- Adam<br><br>
+	and lists here, or download the source below to run on your own server or tinker with. Have fun!<br><br>
+	- Adam<br><br>
+	Jotbook development is supported by <a href='https://getlooseleaf.com'>Loose Leaf app</a> for iPad.<br><br>
 	</div>
 <?	
 }else if($invalid_list){
@@ -323,7 +338,9 @@ if(!$list_id){
 	Jotbook was created by <a href='https://twitter.com/adamwulf'>Adam Wulf</a> and <a href='https://twitter.com/buckwilson'>Buck Wilson</a> many years ago
 	as a prototype for realtime list collaboration. What you see here is the first exploratory phase of building out the service, which we later
 	abandoned. As unrefined as it is, I've found it useful for quick note taking, so I've opened it up for wider use. Feel free to write some notes
-	and lists here, or download the source below to run on your own server or tinker with. Have fun!<br>- Adam<br><br>
+	and lists here, or download the source below to run on your own server or tinker with. Have fun!<br><br>
+	- Adam<br><br>
+	Jotbook development is supported by <a href='https://getlooseleaf.com'>Loose Leaf app</a> for iPad.<br><br>
 	</div>
 <?	
 }else{
@@ -343,8 +360,12 @@ if($list_id){
 <br><br><br><br>
 <div style='font-size:10pt'>
 (Click a row to edit. Up/Down arrows to move between rows. Tab and Shift+Tab to indent, unindent. Enter to add new rows. Esc to finish editing.)
+<? if($list_id){ ?>
 <br><br>
-Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or comments about Jotbook.
+Share <?="<a href='$url'>$url</a>"?> with anyone to edit it together.
+<? } ?>
+<br><br>
+<a href='http://www.milestonemade.com/'>Milestone Made</a> © 2014 | Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or comments about Jotbook.
 </div>
 <?
 }

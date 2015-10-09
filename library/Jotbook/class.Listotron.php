@@ -227,7 +227,6 @@ class Listotron{
 		$row = $this->updateRow($row["row_id"], "del", $this->getNOW());
 		$rows[] = $row;
 		$rows = $this->updateLastModified($rows, $user_id);
-		$this->save();
 		
 		return $rows;
 	}
@@ -250,7 +249,7 @@ class Listotron{
 		return $rows;
 	}
 	
-	protected function save(){
+	function save(){
 		if(is_string($this->filename)) @file_put_contents($this->filename, serialize($this->data));
 	}
 	
@@ -266,7 +265,6 @@ class Listotron{
 					$this->data["users"][$i]["screenname"] = $twitter->screenname();
 					$this->data["users"][$i]["avatar"] = $twitter->avatar();
 				}
-				$this->save();
 				return;
 			}
 		}
@@ -275,8 +273,6 @@ class Listotron{
 		$newuser["stamp"] = $this->getNOW();
 		$newuser["row_id"] = $row_id;
 		$this->data["users"][] = $newuser;
-
-		$this->save();
 	}
 	
 	public function getMovementSince($dt){
@@ -328,9 +324,6 @@ class Listotron{
 		$rows = array_reverse($rows);
 		$rows = $this->updateLastModified($rows, $user_id);
 		
-		// save the changes
-		$this->save();
-		
 		return $rows;
 	}
 	
@@ -374,9 +367,6 @@ class Listotron{
 		array_splice($rows, 0, 0, array($row));
 		$rows = $this->updateLastModified($rows, $user_id);
 
-		// save the changes
-		$this->save();
-		
 		return $rows;
 	}
 	
@@ -402,8 +392,6 @@ class Listotron{
 		}
 		
 		$rows = $this->updateLastModified($rows, $user_id);
-		// save the changes
-		$this->save();
 		
 		return $rows;
 	}
@@ -448,21 +436,19 @@ class Listotron{
 			}
 		}
 		$rows = $this->updateLastModified($rows, $user_id);
-		// save the changes
-		$this->save();
 		
 		return $rows;
 	}
 		
 		
-	public function editRow($row_id, $text, $user_id){
+	public function editRow($row_id, $checked, $text, $user_id){
 		$row = $this->getRow($row_id);
 		$row = $this->updateRow($row["row_id"], "text", $text);
+		$row = $this->updateRow($row["row_id"], "checked", $checked);
 		
 		$rows = array();
 		$rows[] = $row;
 		$rows = $this->updateLastModified($rows, $user_id);
-		$this->save();
 		return $rows;
 	}
 	
