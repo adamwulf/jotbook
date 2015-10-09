@@ -144,6 +144,17 @@ jQuery.extend({
 			}
 		}
 		
+		this.setChecked = function(checked){
+			if(checked != data.checked){
+				revert_actions.push(createRevertAction(function(val){ data.checked = val; }, data.checked));
+				data.checked = checked;
+			}
+		}
+		
+		this.getChecked = function(){
+			return data.checked;
+		}
+		
 		this.getParent = function(){
 			return model.getRow(that.getParentId());
 		}
@@ -398,6 +409,7 @@ jQuery.extend({
 						 dt : lastLoad,
 						 row_id : row.getRowId(),
 						 text : row.getText(),
+						 checked : row.getChecked(),
 						 user_id : that.getUserId() },
 				type: 'POST',
 				error: function(){

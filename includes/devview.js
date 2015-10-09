@@ -2,17 +2,17 @@ jQuery.extend({
 
 	RowLI : function(row, view){
 		var that = this;
-		var $dom = $("<li id='row_" + row.getRowId() + "'><input style='display:none;'/><span></span><ul></ul></li>");
+		var $dom = $("<li id='row_" + row.getRowId() + "'><input type='checkbox' class='checkbox'/><input style='display:none;' class='str' /><span></span><ul></ul></li>");
 		var editing = false;
 		var needsFocus = true;
 		
 		this.setEditMode = function(b){
 			if(b){
 				$dom.find("span:first").hide();
-				$dom.find("input:first").show().val(row.getText());
+				$dom.find("input.str:first").show().val(row.getText());
 				that.focus(true); // force the selection of this row
 			}else{
-				$dom.find("input:first").hide();
+				$dom.find("input.str:first").hide();
 				$dom.find("span:first").show();
 				if(that.isEditing()) that.saveChanges();
 			}
@@ -36,12 +36,13 @@ jQuery.extend({
 		 * but need to select a different row
 		 */
 		this.focus = function(force){
-			if(needsFocus || force) $dom.find("input:first").focus().select();
+			if(needsFocus || force) $dom.find("input.str:first").focus().select();
 		}
 		
 		this.saveChanges = function(){
-			if($dom.find("input:first").val() != row.getText()){
-				row.setText($dom.find("input:first").val());
+			if($dom.find("input.str:first").val() != row.getText() ||
+			   $dom.find("input[type=checkbox]:first").is(":checked") != row.getChecked()){
+				row.setText($dom.find("input.str:first").val());
 				row.confirm();
 				that.refresh();
 			}
@@ -53,48 +54,61 @@ jQuery.extend({
 			}
 		});
 		
+		$dom.find("input[type=checkbox]:first").change(function(e){
+			if($(this).is(":checked") != row.getChecked()) {
+				row.setChecked($(this).is(":checked"));
+				row.confirm();
+				that.refresh();
+				view.unselectAll();
+			}
+		});
 
-		$dom.find("input:first").keydown(function(e){
+		$dom.find("input.str:first").keydown(function(e){
 			if(editing){
 				needsFocus = true;
-				if($dom.find("input:first").val() == "" && e.keyCode == 8){ // delete
+				if($dom.find("input.str:first").val() == "" && e.keyCode == 8){ // delete
 					view.deleteRow(that);
 					return false;
 				}else if(e.keyCode == 27){ // escape
 					view.unselectAll();
 					return false;
+				}else if(e.keyCode == 13 && e.metaKey){ // shift enter
+					row.setText($dom.find("input.str:first").val());
+					row.setChecked(!row.getChecked());
+					row.confirm();
+					that.refresh();
 				}else if(e.keyCode == 13 && !e.shiftKey){ // enter
-					row.setText($dom.find("input:first").val());
+					row.setText($dom.find("input.str:first").val());
 					row.confirm();
 					that.refresh();
 					view.addRowAfter(that);
 				}else if(e.keyCode == 13 && e.shiftKey){ // shift enter
-					row.setText($dom.find("input:first").val());
+					row.setText($dom.find("input.str:first").val());
 					row.confirm();
 					that.refresh();
 					view.addRowBefore(that);
 				}else if(e.keyCode == 40){ // down
-					row.setText($dom.find("input:first").val());
+					row.setText($dom.find("input.str:first").val());
 					row.confirm();
 					that.refresh();
 					view.selectNextRow(that);
 				}else if(e.keyCode == 38){ // up
-					row.setText($dom.find("input:first").val());
+					row.setText($dom.find("input.str:first").val());
 					row.confirm();
 					that.refresh();
 					view.selectPreviousRow(that);
 				}else if(e.keyCode == 9 && !e.shiftKey){ // tab
-					row.setText($dom.find("input:first").val());
+					row.setText($dom.find("input.str:first").val());
 					row.confirm();
 					view.indent(that);
 					return false;
 				}else if(e.keyCode == 9 && e.shiftKey){ // tab
-					row.setText($dom.find("input:first").val());
+					row.setText($dom.find("input.str:first").val());
 					row.confirm();
 					view.outdent(that);
 					return false;
 				}else{
-					row.setText($dom.find("input:first").val());
+					row.setText($dom.find("input.str:first").val());
 					row.confirm();
 					needsFocus = false;
 //					console.log(e.keyCode);
@@ -111,7 +125,18 @@ jQuery.extend({
 		}
 		
 		this.refresh = function(){
+			$ch = $dom.find("input[type=checkbox]:first");
+			if(row.getChecked()){
+				$ch.attr('checked', 'checked');
+			}else{
+				$ch.removeAttr('checked');
+			}
 			$dom.find("span:first").text(row.getText());
+			if(row.getChecked()){
+				$dom.addClass("completed");
+			}else{
+				$dom.removeClass("completed");
+			}
 		}
 		
 		/**
