@@ -74,7 +74,7 @@ class Controller{
 				$out = array();
 				$out["error"] = false;
 				$out["dt"] = $listotron->getNOW();
-				$out["rows"] = $listotron->editRow($data[$i]->row_id, $data[$i]->text, $data[$i]->user_id);
+				$out["rows"] = $listotron->editRow($data[$i]->row_id, $data[$i]->checked, $data[$i]->text, $data[$i]->user_id);
 			}else if(isset($data[$i]->indent)){
 				// indent a row, and return all changed rows
 	
@@ -109,6 +109,8 @@ class Controller{
 			}
 			$ret[] = $out;
 		}
+		
+		$listotron->save();
 		
 		return $ret;
 	}

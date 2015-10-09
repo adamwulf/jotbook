@@ -22,7 +22,6 @@ try{
 	$list_id = readFormValue("list_id", $_REQUEST);
 	$owner_name = readFormValue("owner_name", $_REQUEST);
 	
-	
 
 	// generate filenames
 	$filename = DATA_LOC . "/" . $owner_name . "/" . $list_id . ".data";
@@ -73,6 +72,7 @@ try{
 	$txt_before = $list->getHumanReadable();
 	
 	if(!$ok_before){
+		releaseLock();
 		echo "not ok!";
 		exit;
 	}
@@ -119,7 +119,7 @@ try{
 	// release the lock
 	
 	releaseLock();
-	
+
 	//
 	////////////////////////////////////////////
 	////////////////////////////////////////////
