@@ -115,19 +115,19 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
     header('Location: ' . page_self_url());
     die();
 }else if(isset($_GET['twitter_login'])){
-	if (!isset($_SESSION['twitter_oauth_verify'])) {
-		$auth_url = $app->twitterLogin(array(
-	        'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
-	        'state' => 'twitter_login'
-	    ));
-	    header('Location: ' . $auth_url);
-	    die();
-	}elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['twitter_oauth_verify'])) {
+	if (isset($_GET['oauth_verifier']) && isset($_SESSION['twitter_oauth_verify'])) {
 	
 		$app->verifyLogin($_GET['oauth_verifier']);
 	
 	    // send to same URL, without oauth GET parameters
 	    header('Location: ' . page_self_url());
+	    die();
+	}else{
+		$auth_url = $app->twitterLogin(array(
+	        'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+	        'state' => 'twitter_login'
+	    ));
+	    header('Location: ' . $auth_url);
 	    die();
 	}
 }
@@ -163,7 +163,7 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
 		li span{
 			display: block;
 			padding:3px;
-			height: 14px;
+			min-height: 14px;
 			font-size: 10pt;
 		}
 		li input.str{

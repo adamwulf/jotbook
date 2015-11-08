@@ -36,7 +36,9 @@ jQuery.extend({
 		 * but need to select a different row
 		 */
 		this.focus = function(force){
-			if(needsFocus || force) $dom.find("input.str:first").focus().select();
+			if(needsFocus || force){
+				$dom.find("input.str:first").focus().select();
+			}
 		}
 		
 		this.saveChanges = function(){
@@ -108,10 +110,36 @@ jQuery.extend({
 					view.outdent(that);
 					return false;
 				}else{
+					// noop - see keyup
+					needsFocus = false;
+				}
+			}
+		});
+		
+		
+		$dom.find("input.str:first").keyup(function(e){
+			if(editing){
+				if($dom.find("input.str:first").val() == "" && e.keyCode == 8){ // delete
+					// noop - see keydown
+				}else if(e.keyCode == 27){ // escape
+					// noop - see keydown
+				}else if(e.keyCode == 13 && e.metaKey){ // shift enter
+					// noop - see keydown
+				}else if(e.keyCode == 13 && !e.shiftKey){ // enter
+					// noop - see keydown
+				}else if(e.keyCode == 13 && e.shiftKey){ // shift enter
+					// noop - see keydown
+				}else if(e.keyCode == 40){ // down
+					// noop - see keydown
+				}else if(e.keyCode == 38){ // up
+					// noop - see keydown
+				}else if(e.keyCode == 9 && !e.shiftKey){ // tab
+					// noop - see keydown
+				}else if(e.keyCode == 9 && e.shiftKey){ // tab
+					// noop - see keydown
+				}else{
 					row.setText($dom.find("input.str:first").val());
 					row.confirm();
-					needsFocus = false;
-//					console.log(e.keyCode);
 				}
 			}
 		});
