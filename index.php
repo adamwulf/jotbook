@@ -189,6 +189,7 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
 			border-left: 1px solid black;
 			padding:20px;
 			min-height: 200px;
+			overflow: hidden;
 		}
 		#interface{
 			margin-right: 240px;
