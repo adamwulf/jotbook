@@ -174,10 +174,15 @@ jQuery.extend({
 		this.updateKid = function(rowli){
 			if(rowli.getRow().getPreviousId()){;
 				/* Find parent, insert me after the sibling (under that parent) */
-				rowli.getDOM().insertAfter($dom.find("ul:first #row_" + rowli.getRow().getPreviousId()));
+				$prevSib = $dom.find("ul:first #row_" + rowli.getRow().getPreviousId());
+				if(!$prevSib.next("li").is(rowli.getDOM())){
+					rowli.getDOM().insertAfter($prevSib);
+				}
 			}else{
 				/* Find parent, make me its first child */
-				rowli.getDOM().prependTo($dom.find("ul:first"));
+				if(!$dom.find("ul:first").children("li:first").is(rowli.getDOM())){
+					rowli.getDOM().prependTo($dom.find("ul:first"));
+				}
 			}
 			/* for tables */
 			/*
@@ -205,10 +210,17 @@ jQuery.extend({
 		var $dom = $("<div><span>The List</span><ul></ul></div>");
 		
 		this.updateKid = function(rowli){
-			if(rowli.getRow().getPreviousId()){
-				rowli.getDOM().insertAfter($dom.find("ul:first #row_" + rowli.getRow().getPreviousId()));
+			if(rowli.getRow().getPreviousId()){;
+				/* Find parent, insert me after the sibling (under that parent) */
+				$prevSib = $dom.find("ul:first #row_" + rowli.getRow().getPreviousId());
+				if(!$prevSib.next("li").is(rowli.getDOM())){
+					rowli.getDOM().insertAfter($prevSib);
+				}
 			}else{
-				rowli.getDOM().prependTo($dom.find("ul:first"));
+				/* Find parent, make me its first child */
+				if(!$dom.find("ul:first").children("li:first").is(rowli.getDOM())){
+					rowli.getDOM().prependTo($dom.find("ul:first"));
+				}
 			}
 		}
 		
