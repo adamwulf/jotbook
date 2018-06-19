@@ -10,6 +10,13 @@ RewriteBase /
 	Deny From All
 </Files>
 
+RewriteCond %{HTTP_HOST} ^jotbook\.net [NC]
+RewriteCond %{HTTP_HOST}   !^$
+RewriteRule ^/?(.*)         https://www.jotbook.net/$1 [L,R=301,NE]
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 # Protect application and system files from being viewed
 RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
 

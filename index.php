@@ -27,9 +27,9 @@ if(isset($_GET["create_list"])){
 	}
 	
 	if($app->isLoggedIn()){
-		header("Location: http://jotbook.net/" . $app->twitter()->screenname() . "/" . $list_id . "/");
+		header("Location: https://www.jotbook.net/" . $app->twitter()->screenname() . "/" . $list_id . "/");
 	}else{
-		header("Location: http://jotbook.net/list/" . $list_id . "/");
+		header("Location: https://www.jotbook.net/list/" . $list_id . "/");
 	}
 	exit;
 }
@@ -48,7 +48,7 @@ $my_name = $app->isLoggedIn() ? $app->twitter()->screenname() : "list";
 if($app->isLoggedIn() && isset($_GET["copy"])){
 	// copy the current list to the user's own account
 	$list_id = $app->copyList($owner_name, $list_id, $my_name);
-	header("Location: http://jotbook.net/" . $app->twitter()->screenname() . "/" . $list_id . "/");
+	header("Location: https://www.jotbook.net/" . $app->twitter()->screenname() . "/" . $list_id . "/");
 	exit;
 }
 
@@ -124,7 +124,7 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
 	    die();
 	}else{
 		$auth_url = $app->twitterLogin(array(
-	        'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+	        'oauth_callback' => 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
 	        'state' => 'twitter_login'
 	    ));
 	    header('Location: ' . $auth_url);
@@ -288,7 +288,7 @@ if($app->isLoggedIn()){
 	
 if($list_id){
 	echo "<br><br>";
-	$url = "http://jotbook.net/" . $owner_name . "/" . $list_id;
+	$url = "https://www.jotbook.net/" . $owner_name . "/" . $list_id;
 	echo "Access this list anytime at <a href='$url'>$url</a>.";
 	echo "<br><br>";
 	echo "Share this URL with others to edit this list together!";
@@ -303,11 +303,11 @@ if($list_id){
 if(!$list_id){
 ?>
 	<div style='padding:100px;margin-right:240px;'>
-	<b><a href='http://jotbook.net'>Jotbook.net</a></b> lets you easily create and edit lists together with others.
-	Each list is given a permanent and public URL. Share that URL with others to collaborate on your list! All lists are editable by anyone if you give them the URL!
+	<b><a href='https://www.jotbook.net'>Jotbook.net</a></b> lets you easily create and edit lists with others.<br><br>
+	Each list is given a permanent URL. Share that URL with others to collaborate on your list! Anyone you give the URL to can edit the list with you!
 	<br><br>
 	<form action="/">
-	http://jotbook.net/<?=$my_name?>/<input type=text name=create_list size=30 placeholder="your list name"/>
+	https://www.jotbook.net/<?=$my_name?>/<input type=text name=create_list size=30 placeholder="your list name"/>
 	<input type=submit value=Go>
 	</form>
 	
@@ -326,10 +326,10 @@ if(!$list_id){
 	// i can only add a list ot the anonymous url or to my username's url
 ?>
 	<div style='padding:100px;margin-right:240px;'>
-	<b><a href='http://jotbook.net'>Jotbook.net</a></b> lets you easily create and edit lists together with others.
+	<b><a href='https://www.jotbook.net'>Jotbook.net</a></b> lets you easily create and edit lists together with others.
 	<br><br>
 	<b>404</b> - The list "<?=$list_id?>" does not exist in <?=$owner_name?>'s account.<br><br>
-	Create this list at <a href='http://jotbook.net/list/?create_list=<?=$list_id?>'>http://jotbook.net/<?=$my_name?>/<?=$list_id?>/</a> instead.
+	Create this list at <a href='https://www.jotbook.net/list/?create_list=<?=$list_id?>'>https://www.jotbook.net/<?=$my_name?>/<?=$list_id?>/</a> instead.
 	
 	<br><br><br><br><br><br><br><br>
 		
@@ -366,7 +366,7 @@ if($list_id){
 Share <?="<a href='$url'>$url</a>"?> with anyone to edit it together.
 <? } ?>
 <br><br>
-<a href='http://www.milestonemade.com/'>Milestone Made</a> © 2014 | Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or comments about Jotbook.
+<a href='https://www.milestonemade.com/'>Milestone Made</a> © 2014 | Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or comments about Jotbook.
 </div>
 <?
 }
