@@ -115,21 +115,22 @@ if($app->isLoggedIn() && isset($_GET["forget"])){
     header('Location: ' . page_self_url());
     die();
 }else if(isset($_GET['twitter_login'])){
-	if (isset($_GET['oauth_verifier']) && isset($_SESSION['twitter_oauth_verify'])) {
+	$current_url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	$current_url=strtok($current_url,'?');
+	$auth_url = $app->twitterLogin(array(
+        'oauth_callback' => 'https://www.jotbook.net/',
+        'true_callback' => $current_url,
+        'state' => 'twitter_login'
+    ));
+    
+    header('Location: ' . $auth_url);
+    die();
+}else if (isset($_GET['oauth_verifier']) && isset($_SESSION['twitter_oauth_verify'])) {
+	$true_callback = $app->verifyLogin($_GET['oauth_verifier']);
 	
-		$app->verifyLogin($_GET['oauth_verifier']);
-	
-	    // send to same URL, without oauth GET parameters
-	    header('Location: ' . page_self_url());
-	    die();
-	}else{
-		$auth_url = $app->twitterLogin(array(
-	        'oauth_callback' => 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
-	        'state' => 'twitter_login'
-	    ));
-	    header('Location: ' . $auth_url);
-	    die();
-	}
+    // send to same URL, without oauth GET parameters
+    header('Location: ' . $true_callback);
+    die();
 }
 
 ?>
@@ -250,7 +251,9 @@ if($app->isLoggedIn()){
 				if($list_id == $not_my_lists[$i]["list_id"] && $owner_name == $not_my_lists[$i]["owner_name"]){
 					echo $list_id . "<br>";
 				}else{
-					echo "<a href='/" . $not_my_lists[$i]["owner_name"] . "/" . urlencode($not_my_lists[$i]["list_id"]) . "/'>" . $not_my_lists[$i]["list_id"] . "</a><br>";
+					echo "<a href='/" . $not_my_lists[$i]["owner_name"] . "/" . urlencode($not_my_lists[$i]["list_id"]) . "/'>" . 
+						$not_my_lists[$i]["list_id"] . 
+						"</a><br>";
 				}
 			}
 		}
@@ -366,7 +369,8 @@ if($list_id){
 Share <?="<a href='$url'>$url</a>"?> with anyone to edit it together.
 <? } ?>
 <br><br>
-<a href='https://www.milestonemade.com/'>Milestone Made</a> © 2014 | Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with questions or comments about Jotbook.
+<a href='https://www.milestonemade.com/'>Milestone Made</a> © 2014 | Contact <a href='https://twitter.com/adamwulf'>@adamwulf</a> with
+	questions or comments about Jotbook.
 </div>
 <?
 }

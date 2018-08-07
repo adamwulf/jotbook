@@ -74,6 +74,7 @@ class EasyApp{
 	    $reply = $this->cb->oauth_requestToken($callback_params);
 	    // store the token
 	    $this->cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
+	    $_SESSION['true_callback'] = $callback_params['true_callback'];
 	    $_SESSION['twitter_oauth_token'] = $reply->oauth_token;
 	    $_SESSION['twitter_oauth_token_secret'] = $reply->oauth_token_secret;
 	    $_SESSION['twitter_oauth_verify'] = true;
@@ -102,10 +103,14 @@ class EasyApp{
 		if($ret == JSONtoMYSQL::$UPDATE){
 			$done = true;
 		}
+		
+		$true_callback = isset($_SESSION['true_callback']) ? $_SESSION['true_callback'] : page_self_url();
+		
 		// don't allow any session oauth vars outside of here...
 		unset($_SESSION['twitter_oauth_token']);
 		unset($_SESSION['twitter_oauth_token_secret']);
 		unset($_SESSION['twitter_oauth_verify']);
+		unset($_SESSION['true_callback']);
 		
 		
 		$profile = $this->twitter()->fetchSomeTwitterInfo();
@@ -113,6 +118,8 @@ class EasyApp{
 		// get the profile image and save it to our db too
 		$reply->avatar = $profile->profile_image_url;
 		$ret = $this->db->save($reply, "twitter_login");
+		
+		return $true_callback;
 	}
 	
 	
