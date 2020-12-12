@@ -41,9 +41,6 @@ class EasyApp{
 	public function twitter(){
 		if($this->isLoggedIn()){
 			return $this->twitter;
-		}else{
-			throw new Exception();
-			return null;
 		}
 	}
 

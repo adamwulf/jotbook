@@ -14,14 +14,12 @@ session_start();
 //mysql_select_db(DB_NAME, $mysql);
 
 try{
-
 	$my_name = "list";
 	if($app->isLoggedIn()){
 		$my_name = $app->twitter()->screenname();
 	}
 	$list_id = readFormValue("list_id", $_REQUEST);
 	$owner_name = readFormValue("owner_name", $_REQUEST);
-	
 
 	// generate filenames
 	$filename = DATA_LOC . "/" . $owner_name . "/" . $list_id . ".data";
@@ -127,6 +125,8 @@ try{
 	exit;
 
 }catch(Exception $e){
+	print_r($e);
+	
 	// something bad happened
 	$ret = array();
 	$ret["error"] = true;

@@ -1,3 +1,5 @@
+error_log
+.well-known
 config.php
 list.data
 error
