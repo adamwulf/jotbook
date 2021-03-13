@@ -2,7 +2,7 @@
 # RewriteEngine On
 
 # Installation directory
-# RewriteBase /
+# /
 
 # Protect hidden files from being viewed
 <Files .*>
@@ -38,10 +38,10 @@ RewriteRule ^list/([a-zA-Z0-9\-_]*)/(.*) $2 [QSA,L]
 
 
 # Rewrite all other URLs to index.php/URL
-RewriteRule ^([a-zA-Z0-9\-_]*)/([a-zA-Z0-9\-_]*)/$ index.php/?owner_name=$1&list_id=$2 [QSA,L]
+RewriteRule ^([a-zA-Z0-9\-_]*)/([a-zA-Z0-9\-_]*)/$ index.php?owner_name=$1&list_id=$2 [QSA,L]
 
 # Rewrite all other URLs to index.php/URL
-RewriteRule ^([a-zA-Z0-9\-_]*)/([a-zA-Z0-9\-_]*)/ajax.php ajax.php/?owner_name=$1&list_id=$2 [QSA,L]
+RewriteRule ^([a-zA-Z0-9\-_]*)/([a-zA-Z0-9\-_]*)/ajax.php ajax.php?owner_name=$1&list_id=$2 [QSA,L]
 
 # Rewrite all other URLs to index.php/URL
 RewriteRule ^([a-zA-Z0-9\-_]*)/([a-zA-Z0-9\-_]*)/(.*) $3 [QSA,L]

@@ -133,9 +133,10 @@
 	}
   }  
   
-  function __autoload($classname){
+  function customAutoloader($classname){
 	$ClassLoader = new ClassLoader();
 	$ClassLoader->addToClasspath(dirname(__FILE__) . "/");
 	$ClassLoader->load($classname);
   }
+  spl_autoload_register('customAutoloader');
 ?>

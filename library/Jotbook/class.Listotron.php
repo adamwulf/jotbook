@@ -71,7 +71,7 @@ class Listotron{
 		$this->nextId = 0;
 		for($j=0;$j<count($this->data["rows"]);$j++){
 			if($this->data["rows"][$j]["row_id"] >= $this->nextId){
-				$this->nextId = $this->data["rows"][$j]["row_id"] + 1;
+				$this->nextId = (int)($this->data["rows"][$j]["row_id"]) + 1;
 			}
 		}
 
